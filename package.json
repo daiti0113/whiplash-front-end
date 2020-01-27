@@ -1,0 +1,23 @@
+{
+  "name": "whiplash-front-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "json-server": "^0.15.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daiti0113/whiplash-front-end.git"
+  },
+  "author": "daiti0113",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daiti0113/whiplash-front-end/issues"
+  },
+  "homepage": "https://github.com/daiti0113/whiplash-front-end#readme"
+}
