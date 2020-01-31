@@ -7,8 +7,18 @@ const middlewares = jsonServer.defaults()
 server.use(middlewares)
 server.use((req, res, next) => {
     // テスト用のモックなので、HTTPメソッドは全てGETに変えて、正常終了したようにレスポンスを返す。
-    if (req.method === 'POST' || req.method === 'PUT') {
+    if (req.method === 'POST') {
         req.method = 'GET' // GETに偽装
+        req.url += "_post"
+    } else if (req.method === "PUT") {
+        req.method = 'GET' // GETに偽装
+        req.url += "_put"
+    } else if (req.method === "DELETE") {
+        req.method = 'GET' // GETに偽装
+        req.url += "_delete"
+    } else if (req.method === "PUT") {
+        req.method = 'GET' // GETに偽装
+        req.url += "_put"
     }
     req.url = req.url.replace(/\./g, "")
     console.log(req.url)
