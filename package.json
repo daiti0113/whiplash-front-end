@@ -29,7 +29,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "alias": {
-    "components": "./src/components"
+    "components": "./src/components",
+    "api": "./src/api.js"
   },
   "repository": {
     "type": "git",

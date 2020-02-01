@@ -7,8 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import axios from 'axios';
-import "@babel/polyfill";
+import requestAPI from "api"
 
 
 const useStyles = makeStyles(theme => ({
@@ -24,16 +23,15 @@ const useStyles = makeStyles(theme => ({
 
 export default function ItemList() {
   const classes = useStyles();
-
   const [items, setItems] = useState([]);
 
-  useEffect(async () => {
-    const result = await axios(
-      'http://localhost:3001/item',
-    )
-    // console.log(result.data);
-    setItems(result.data);
-  }, [setItems]);
+  useEffect(() => {
+    const fetchData = async() => {
+      const response = await requestAPI('GET', '/item');
+      setItems(response.data);
+    };
+    fetchData();
+  }, []); // 第２引数の変数が更新されると、フックが実行される(APIへのリクエストを行う)。
 
 
   return (
