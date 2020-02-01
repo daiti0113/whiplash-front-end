@@ -1,12 +1,12 @@
 import React from 'react';
 import AppBar from 'components/AppBar'
-import RequestAPI from 'components/RequestAPI'
+import ItemList from 'components/ItemList'
 
 function Top() {
   return (
       <div>
         <AppBar />
-        <RequestAPI />
+        <ItemList />
       </div>
   );
 }
