@@ -7,7 +7,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import requestAPI from "api"
+import requestAPI from 'api';
+import images from '../../assets/images/Pearl/*.jpg'
 
 
 const useStyles = makeStyles(theme => ({
@@ -40,7 +41,7 @@ export default function ItemList() {
         <div>
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+              <Avatar src={images['121HC']} />
             </ListItemAvatar>
             <ListItemText
               primary={item.name}
