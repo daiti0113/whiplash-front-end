@@ -10,8 +10,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Barrel",
-        "img_path":"./img/Pearl/121HC.jpg",
+        "img_path":"/static/images/Pearl/121HC.jpg",
         "taper":"S",
+        "evaluation": 4.5,
+        "evaluationCount": 4,
         "price":1050
       },
       {
@@ -24,8 +26,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Arrow",
-        "img_path":"./img/Pearl/7HC.jpg",
+        "img_path":"/static/images/Pearl/7HC.jpg",
         "taper":"M",
+        "evaluation": 4.2,
+        "evaluationCount": 3,
         "price":1050
       },
       {
@@ -38,8 +42,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Arrow",
-        "img_path":"./img/Pearl/7HBC.jpg",
+        "img_path":"/static/images/Pearl/7HBC.jpg",
         "taper":"M",
+        "evaluation": 3.0,
+        "evaluationCount": 2,
         "price":1123
       },
       {
@@ -52,8 +58,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Barrel",
-        "img_path":"./img/Pearl/103HC.jpg",
+        "img_path":"/static/images/Pearl/103HC.jpg",
         "taper":"M",
+        "evaluation": 5.0,
+        "evaluationCount": 1,
         "price":1050
       },
       {
@@ -66,8 +74,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Barrel",
-        "img_path":"./img/Pearl/121HC.jpg",
+        "img_path":"/static/images/Pearl/121HC.jpg",
         "taper":"S",
+        "evaluation": 4.9,
+        "evaluationCount": 6,
         "price":1050
       },
       {
@@ -80,8 +90,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Arrow",
-        "img_path":"./img/Pearl/7HC.jpg",
+        "img_path":"/static/images/Pearl/7HC.jpg",
         "taper":"M",
+        "evaluation": 2.5,
+        "evaluationCount": 4,
         "price":1050
       },
       {
@@ -94,8 +106,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Arrow",
-        "img_path":"./img/Pearl/7HBC.jpg",
+        "img_path":"/static/images/Pearl/7HBC.jpg",
         "taper":"M",
+        "evaluation": 3.6,
+        "evaluationCount": 5,
         "price":1123
       },
       {
@@ -108,8 +122,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Barrel",
-        "img_path":"./img/TAMA/XXX.jpg",
+        "img_path":"/static/images/TAMA/XXX.jpg",
         "taper":"M",
+        "evaluation": 2.2,
+        "evaluationCount": 8,
         "price":1050
       },
       {
@@ -122,8 +138,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Barrel",
-        "img_path":"./img/Pearl/121HC.jpg",
+        "img_path":"/static/images/Pearl/121HC.jpg",
         "taper":"S",
+        "evaluation": 4.3,
+        "evaluationCount": 5,
         "price":1050
       },
       {
@@ -136,8 +154,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Arrow",
-        "img_path":"./img/Pearl/7HC.jpg",
+        "img_path":"/static/images/Pearl/7HC.jpg",
         "taper":"M",
+        "evaluation": 4.1,
+        "evaluationCount": 6,
         "price":1050
       },
       {
@@ -150,8 +170,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Arrow",
-        "img_path":"./img/Pearl/7HBC.jpg",
+        "img_path":"/static/images/Pearl/7HBC.jpg",
         "taper":"M",
+        "evaluation": 1.3,
+        "evaluationCount": 5,
         "price":1123
       },
       {
@@ -164,8 +186,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Barrel",
-        "img_path":"./img/Pearl/103HC.jpg",
+        "img_path":"/static/images/Pearl/103HC.jpg",
         "taper":"M",
+        "evaluation": 3.0,
+        "evaluationCount": 3,
         "price":1035
       },
       {
@@ -178,8 +202,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Barrel",
-        "img_path":"./img/Pearl/121HC.jpg",
+        "img_path":"/static/images/Pearl/121HC.jpg",
         "taper":"S",
+        "evaluation": 4.0,
+        "evaluationCount": 2,
         "price":1020
       },
       {
@@ -192,8 +218,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Arrow",
-        "img_path":"./img/Pearl/7HC.jpg",
+        "img_path":"/static/images/Pearl/7HC.jpg",
         "taper":"M",
+        "evaluation": 4.0,
+        "evaluationCount": 1,
         "price":1030
       },
       {
@@ -206,8 +234,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Arrow",
-        "img_path":"./img/Pearl/7HBC.jpg",
+        "img_path":"/static/images/Pearl/7HBC.jpg",
         "taper":"M",
+        "evaluation": 2.0,
+        "evaluationCount": 1,
         "price":1223
       },
       {
@@ -220,8 +250,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Barrel",
-        "img_path":"./img/Pearl/103HC.jpg",
+        "img_path":"/static/images/Pearl/103HC.jpg",
         "taper":"L",
+        "evaluation": 1.0,
+        "evaluationCount": 2,
         "price":1350
       },
       {
@@ -234,8 +266,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Barrel",
-        "img_path":"./img/Pearl/103HC.jpg",
+        "img_path":"/static/images/Pearl/103HC.jpg",
         "taper":"M",
+        "evaluation": 5.0,
+        "evaluationCount": 2,
         "price":1053
       },
       {
@@ -248,8 +282,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Barrel",
-        "img_path":"./img/Pearl/103HC.jpg",
+        "img_path":"/static/images/Pearl/103HC.jpg",
         "taper":"L",
+        "evaluation": 4.5,
+        "evaluationCount": 2,
         "price":1052
       },
       {
@@ -262,8 +298,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Barrel",
-        "img_path":"./img/Pearl/103HC.jpg",
+        "img_path":"/static/images/Pearl/103HC.jpg",
         "taper":"M",
+        "evaluation": 3.8,
+        "evaluationCount": 5,
         "price":1000
       },
       {
@@ -276,8 +314,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Barrel",
-        "img_path":"./img/Pearl/103HC.jpg",
+        "img_path":"/static/images/Pearl/103HC.jpg",
         "taper":"M",
+        "evaluation": 2.5,
+        "evaluationCount": 2,
         "price":1024
       },
       {
@@ -290,8 +330,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Barrel",
-        "img_path":"./img/Pearl/103HC.jpg",
+        "img_path":"/static/images/Pearl/103HC.jpg",
         "taper":"M",
+        "evaluation": 1.5,
+        "evaluationCount": 2,
         "price":1050
       },
       {
@@ -304,8 +346,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Barrel",
-        "img_path":"./img/Pearl/103HC.jpg",
+        "img_path":"/static/images/Pearl/103HC.jpg",
         "taper":"M",
+        "evaluation": 1.0,
+        "evaluationCount": 5,
         "price":1050
       },
       {
@@ -318,8 +362,10 @@
         "material":"hickory",
         "tip_material":"Wood",
         "tip_shape":"Barrel",
-        "img_path":"./img/Pearl/103HC.jpg",
+        "img_path":"/static/images/Pearl/103HC.jpg",
         "taper":"M",
+        "evaluation": 3.0,
+        "evaluationCount": 2,
         "price":1050
       }
     ],
