@@ -28,10 +28,6 @@
     "start": "parcel index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "alias": {
-    "components": "./src/components",
-    "api": "./src/api.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/daiti0113/whiplash-front-end.git"
