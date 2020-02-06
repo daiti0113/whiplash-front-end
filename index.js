@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import 'typeface-roboto';
 import '@babel/polyfill';
-import Header from 'components/Header';
+import Header from './src/components/Header';
 import Routes from './src/routes'
 
 function App() {
