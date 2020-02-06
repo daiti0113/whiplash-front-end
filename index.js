@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import Top from '/src/Top';
 import 'typeface-roboto';
-import "@babel/polyfill";
-
+import '@babel/polyfill';
+import Header from 'components/Header';
+import Routes from './src/routes'
 
 function App() {
   return (
-    <Top />
+    <div>
+      <Header />
+      <Routes />
+      {/* <Footer /> */}
+    </div>
   );
 }
 
