@@ -5,10 +5,10 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
 import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
+import StarIcon from '@material-ui/icons/Star';
+import CreateIcon from '@material-ui/icons/Create';
 
 const StyledMenu = withStyles({
   paper: {
@@ -63,22 +63,22 @@ export default function CustomizedMenus() {
         onClose={handleClose}
       >
         <StyledMenuItem>
-          <ListItemIcon>
-            <SendIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Sent mail" />
+        <ListItemIcon>
+            <HomeIcon fontSize="small" />
+        </ListItemIcon>
+        <ListItemText primary="ホーム" />
         </StyledMenuItem>
         <StyledMenuItem>
-          <ListItemIcon>
-            <DraftsIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Drafts" />
+        <ListItemIcon>
+            <StarIcon fontSize="small" />
+        </ListItemIcon>
+        <ListItemText primary="ランキング" />
         </StyledMenuItem>
         <StyledMenuItem>
-          <ListItemIcon>
-            <InboxIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Inbox" />
+        <ListItemIcon>
+            <CreateIcon fontSize="small" />
+        </ListItemIcon>
+        <ListItemText primary="クチコミを書く" />
         </StyledMenuItem>
       </StyledMenu>
     </div>
