@@ -3,16 +3,17 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import 'typeface-roboto';
 import '@babel/polyfill';
+import { BrowserRouter } from 'react-router-dom';
 import Header from './src/components/Header';
 import Routes from './src/routes'
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <Header />
       <Routes />
       {/* <Footer /> */}
-    </div>
+    </BrowserRouter>
   );
 }
 

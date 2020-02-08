@@ -1,6 +1,5 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -9,6 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import StarIcon from '@material-ui/icons/Star';
 import CreateIcon from '@material-ui/icons/Create';
+import { Link } from 'react-router-dom';
 
 const StyledMenu = withStyles({
   paper: {
@@ -66,13 +66,13 @@ export default function CustomizedMenus() {
         <ListItemIcon>
             <HomeIcon fontSize="small" />
         </ListItemIcon>
-        <ListItemText primary="ホーム" />
+        <Link to="/"><ListItemText primary="ホーム" /></Link>
         </StyledMenuItem>
         <StyledMenuItem>
         <ListItemIcon>
             <StarIcon fontSize="small" />
         </ListItemIcon>
-        <ListItemText primary="ランキング" />
+        <Link to="/items"><ListItemText primary="ランキング" /></Link>
         </StyledMenuItem>
         <StyledMenuItem>
         <ListItemIcon>
