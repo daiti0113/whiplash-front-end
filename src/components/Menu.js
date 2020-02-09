@@ -41,6 +41,11 @@ const StyledMenuItem = withStyles(theme => ({
   },
 }))(MenuItem);
 
+const LinkStyle = {
+  textDecoration: 'none',
+  color: '#707070',
+};
+
 export default function CustomizedMenus() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -62,24 +67,30 @@ export default function CustomizedMenus() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem>
-        <ListItemIcon>
-            <HomeIcon fontSize="small" />
-        </ListItemIcon>
-        <Link to="/"><ListItemText primary="ホーム" /></Link>
-        </StyledMenuItem>
-        <StyledMenuItem>
-        <ListItemIcon>
-            <StarIcon fontSize="small" />
-        </ListItemIcon>
-        <Link to="/items"><ListItemText primary="ランキング" /></Link>
-        </StyledMenuItem>
-        <StyledMenuItem>
-        <ListItemIcon>
-            <CreateIcon fontSize="small" />
-        </ListItemIcon>
-        <ListItemText primary="クチコミを書く" />
-        </StyledMenuItem>
+        <Link to="/" style={LinkStyle}>
+          <StyledMenuItem>
+            <ListItemIcon>
+                <HomeIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="ホーム" />
+          </StyledMenuItem>
+        </Link>
+        <Link to="/items" style={LinkStyle}>
+          <StyledMenuItem>
+            <ListItemIcon>
+                <StarIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="ランキング" />
+          </StyledMenuItem>
+        </Link>
+        <Link to="/" style={LinkStyle}>
+          <StyledMenuItem>
+          <ListItemIcon>
+              <CreateIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText primary="クチコミを書く" />
+          </StyledMenuItem>
+        </Link>
       </StyledMenu>
     </div>
   );
