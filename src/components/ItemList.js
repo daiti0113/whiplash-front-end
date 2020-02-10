@@ -34,22 +34,35 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ItemList() {
+export default function ItemList(props) {
   const classes = useStyles();
   const [items, setItems] = useState([]);
+  const [foundItems, setFoundItems] = useState([]); 
 
   useEffect(() => {
     const fetchData = async() => {
       const response = await requestAPI('GET', '/item');
       setItems(response.data);
+      setFoundItems(response.data);
     };
     fetchData();
   }, []); // 第２引数の変数が更新されると、フックが実行される(APIへのリクエストを行う)。
 
+  useEffect(() => {
+    if (props.keywords === '') {
+      setFoundItems(items);
+    } else {
+      setFoundItems(items.filter(function(item){
+        for (let key in item) {
+          if (String(item[key]).indexOf(props.keywords) !== -1) return true;
+        }
+      }));  
+    }
+  }, [props.keywords]);
 
   return (
     <List className={classes.root}>
-      {items.map(item => (
+      {foundItems.map(item => (
         <div>
           <ListItem className={classes.listItem} alignItems="flex-start">
             <ListItemAvatar>
