@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import TuneIcon from '@material-ui/icons/Tune';
 import ItemList from './ItemList';
+import RefineMenu from './RefineMenu';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,6 +37,10 @@ function CustomizedInputBase(props) {
       props.setKeywords(event.target.value);
   }
 
+  function handleClick() {
+    props.setRefineMenuOpen(true);
+}
+
   return (
     <Paper component="form" className={classes.root}>
       <InputBase
@@ -47,7 +52,7 @@ function CustomizedInputBase(props) {
         <SearchIcon />
       </IconButton>
       <Divider className={classes.divider} orientation="vertical" />
-      <IconButton color="primary" className={classes.iconButton} aria-label="tune">
+      <IconButton color="primary" className={classes.iconButton} aria-label="tune" onClick={handleClick}>
         <TuneIcon />
       </IconButton>
     </Paper>
@@ -56,10 +61,12 @@ function CustomizedInputBase(props) {
 
 export default function Search() {
     const [keywords, setKeywords] = useState([]); 
-    
+    const [refineMenuOpen, setRefineMenuOpen] = useState(false);
+  
     return (
         <div>
-            <CustomizedInputBase setKeywords={setKeywords} />
+            <CustomizedInputBase setKeywords={setKeywords} setRefineMenuOpen={setRefineMenuOpen} />
+            <RefineMenu refineMenuOpen={refineMenuOpen} setRefineMenuOpen={setRefineMenuOpen}/>
             <ItemList keywords={keywords} />
         </div>
     )
