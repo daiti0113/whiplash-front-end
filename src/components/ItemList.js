@@ -63,7 +63,7 @@ export default function ItemList(props) {
   return (
     <List className={classes.root}>
       {foundItems.map(item => (
-        <div>
+        <React.Fragment key={item.id}>
           <ListItem className={classes.listItem} alignItems="flex-start">
             <ListItemAvatar>
               <Avatar className={classes.itemImage} src={images['121HC']}>{item.name}</Avatar>
@@ -85,7 +85,7 @@ export default function ItemList(props) {
             </ul>
           </ListItem>
           <Divider variant="inset" component="li" />
-        </div>
+        </React.Fragment>
       ))}
     </List>
   );
