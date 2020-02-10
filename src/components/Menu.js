@@ -75,7 +75,7 @@ export default function CustomizedMenus() {
             <ListItemText primary="ホーム" />
           </StyledMenuItem>
         </Link>
-        <Link to="/items" style={LinkStyle}>
+        <Link to="/ranking" style={LinkStyle}>
           <StyledMenuItem>
             <ListItemIcon>
                 <StarIcon fontSize="small" />
@@ -83,7 +83,7 @@ export default function CustomizedMenus() {
             <ListItemText primary="ランキング" />
           </StyledMenuItem>
         </Link>
-        <Link to="/" style={LinkStyle}>
+        <Link to="/Search" style={LinkStyle}>
           <StyledMenuItem>
           <ListItemIcon>
               <CreateIcon fontSize="small" />
