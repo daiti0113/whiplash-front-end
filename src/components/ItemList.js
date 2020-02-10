@@ -3,23 +3,35 @@ import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
-import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
 import requestAPI from '../api';
 import images from '../../assets/images/Pearl/*.jpg'
+import Rating from '@material-ui/lab/Rating';
 
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
   },
   inline: {
     display: 'inline',
   },
+  listItem: {
+    // height: '70px',
+  },
+  itemDetail: {
+    listStyle: 'none',
+    padding: 10
+  },
+  evaluationCount: {
+    marginLeft: '10px',
+  },
+  itemImage: {
+    width: theme.spacing(9),
+    height: theme.spacing(9)
+  }
 }));
 
 export default function ItemList() {
@@ -39,26 +51,25 @@ export default function ItemList() {
     <List className={classes.root}>
       {items.map(item => (
         <div>
-          <ListItem alignItems="flex-start">
+          <ListItem className={classes.listItem} alignItems="flex-start">
             <ListItemAvatar>
-              <Avatar src={images['121HC']} />
+              <Avatar className={classes.itemImage} src={images['121HC']}>{item.name}</Avatar>
             </ListItemAvatar>
-            <ListItemText
-              primary={item.name}
-              secondary={
-                <React.Fragment>
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    className={classes.inline}
-                    color="textPrimary"
-                  >
-                    Ali Connors
-                  </Typography>
-                  {" — I'll be in your neighborhood doing errands this…"}
-                </React.Fragment>
-              }
-            />
+            <ul className={classes.itemDetail}>
+              <li>{item.name}</li>
+              <li>{item.manufacturer}</li>
+              <li>
+                <Rating
+                  name="simple-controlled"
+                  value={item.evaluation}
+                  precision={0.1}
+                  size="small"
+                />
+                <span>{item.evaluation}</span>
+                <span className={classes.evaluationCount}>{item.evaluationCount}reviews</span>
+              </li>
+              <li>&yen;{item.price}~</li>
+            </ul>
           </ListItem>
           <Divider variant="inset" component="li" />
         </div>
