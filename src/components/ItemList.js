@@ -34,23 +34,36 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ItemList() {
+export default function ItemList(props) {
   const classes = useStyles();
   const [items, setItems] = useState([]);
+  const [foundItems, setFoundItems] = useState([]); 
 
   useEffect(() => {
     const fetchData = async() => {
       const response = await requestAPI('GET', '/item');
       setItems(response.data);
+      setFoundItems(response.data);
     };
     fetchData();
   }, []); // 第２引数の変数が更新されると、フックが実行される(APIへのリクエストを行う)。
 
+  useEffect(() => {
+    if (props.keywords === '') {
+      setFoundItems(items);
+    } else {
+      setFoundItems(items.filter(function(item){
+        for (let key in item) {
+          if (String(item[key]).indexOf(props.keywords) !== -1) return true;
+        }
+      }));  
+    }
+  }, [props.keywords]);
 
   return (
     <List className={classes.root}>
-      {items.map(item => (
-        <div>
+      {foundItems.map(item => (
+        <React.Fragment key={item.id}>
           <ListItem className={classes.listItem} alignItems="flex-start">
             <ListItemAvatar>
               <Avatar className={classes.itemImage} src={images['121HC']}>{item.name}</Avatar>
@@ -72,7 +85,7 @@ export default function ItemList() {
             </ul>
           </ListItem>
           <Divider variant="inset" component="li" />
-        </div>
+        </React.Fragment>
       ))}
     </List>
   );
