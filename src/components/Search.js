@@ -9,10 +9,10 @@ export default function Search() {
     const [refineMenuOpen, setRefineMenuOpen] = useState(false);
   
     return (
-        <div>
-            <SearchInput setKeywords={setKeywords} setRefineMenuOpen={setRefineMenuOpen} />
-            <RefineMenu refineMenuOpen={refineMenuOpen} setRefineMenuOpen={setRefineMenuOpen}/>
-            <ItemList keywords={keywords} />
-        </div>
+      <React.Fragment>
+        <SearchInput setKeywords={setKeywords} setRefineMenuOpen={setRefineMenuOpen} />
+        <RefineMenu refineMenuOpen={refineMenuOpen} setRefineMenuOpen={setRefineMenuOpen}/>
+        <ItemList keywords={keywords} />
+      </React.Fragment>
     )
 };

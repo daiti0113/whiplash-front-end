@@ -6,21 +6,37 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import Collapse from '@material-ui/core/Collapse';
+import StarBorder from '@material-ui/icons/StarBorder';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   list: {
     width: 250,
   },
   fullList: {
     width: 'auto',
   },
-});
+  root: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+  },
+  nested: {
+    paddingLeft: theme.spacing(4),
+  },
+}));
 
 export default function TemporaryDrawer(props) {
   const classes = useStyles();
+  const [nestedListOpen, setNestedListOpen] = React.useState(false);
 
-  function handleClose() {
+  function handleNestedListOpen() {
+    setNestedListOpen(!nestedListOpen);
+  };
+
+  function handleRefineMenuOpen() {
     props.setRefineMenuOpen(false);
   }
 
@@ -28,23 +44,32 @@ export default function TemporaryDrawer(props) {
     <div
       className={classes.list}
       role="presentation"
-      onClick={handleClose}
-      onKeyDown={handleClose}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button onClick={handleNestedListOpen}>
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Inbox" />
+          {nestedListOpen ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={nestedListOpen} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItem button className={classes.nested}>
+              <ListItemIcon>
+                <StarBorder />
+              </ListItemIcon>
+              <ListItemText primary="Starred" />
+            </ListItem>
+          </List>
+        </Collapse>
       </List>
     </div>
   );
 
   return (
     <div>
-      <Drawer anchor="right" open={props.refineMenuOpen} onClose={handleClose}>
+      <Drawer anchor="right" open={props.refineMenuOpen} onClose={handleRefineMenuOpen}>
         {sideList}
       </Drawer>
     </div>
