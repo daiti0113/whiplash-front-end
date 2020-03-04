@@ -5,12 +5,19 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import Slider from '../components/Slider';
+import LocalAtmIcon from '@material-ui/icons/LocalAtm';
+import Typography from '@material-ui/core/Typography';
+import RangeSlider from './RangeSlider';
 
 const useStyles = makeStyles(theme => ({
   list: {
     width: 250,
+  },
+  title: {
+    paddingTop: 8,
+    paddingLeft: 16,
+    paddingBottom: 16,
+    
   },
   fullList: {
     width: 'auto',
@@ -23,6 +30,17 @@ const useStyles = makeStyles(theme => ({
   nested: {
     paddingLeft: theme.spacing(4),
   },
+  refineRabel: {
+    paddingTop: 0,
+    paddingBottom: 0,
+  },
+  refineInput: {
+    paddingTop: 0,
+    paddingBottom: 0,
+  },
+  icon: {
+    minWidth: 32,
+  }
 }));
 
 export default function TemporaryDrawer(props) {
@@ -43,13 +61,37 @@ export default function TemporaryDrawer(props) {
       role="presentation"
     >
       <List>
-        <ListItem>
-          <ListItemIcon>
-            <InboxIcon />
+        <Typography variant="h6" className={classes.title}>
+            絞り込み
+        </Typography>
+        <ListItem className={classes.refineRabel}>
+          <ListItemIcon className={classes.icon}>
+            <LocalAtmIcon />
           </ListItemIcon>
-          <ListItemText primary="Price" />
-          <Slider />
+          <ListItemText primary="価格" />
         </ListItem>
+        <ListItem className={classes.refineInput}>
+          <RangeSlider></RangeSlider>
+        </ListItem>
+        <ListItem className={classes.refineRabel}>
+          <ListItemIcon className={classes.icon}>
+            <LocalAtmIcon />
+          </ListItemIcon>
+          <ListItemText primary="長さ" />
+        </ListItem>
+        <ListItem className={classes.refineInput}>
+          <RangeSlider></RangeSlider>
+        </ListItem>
+        <ListItem className={classes.refineRabel}>
+          <ListItemIcon className={classes.icon}>
+            <LocalAtmIcon />
+          </ListItemIcon>
+          <ListItemText primary="重さ" />
+        </ListItem>
+        <ListItem className={classes.refineInput}>
+          <RangeSlider></RangeSlider>
+        </ListItem>
+
       </List>
     </div>
   );
