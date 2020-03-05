@@ -8,6 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 import Typography from '@material-ui/core/Typography';
 import RangeSlider from './RangeSlider';
+import CheckboxesGroup from './CheckBoxesGroup';
 
 const useStyles = makeStyles(theme => ({
   list: {
@@ -80,7 +81,7 @@ export default function TemporaryDrawer(props) {
           <ListItemText primary="長さ" />
         </ListItem>
         <ListItem className={classes.refineInput}>
-          <RangeSlider></RangeSlider>
+          <CheckboxesGroup list={['TAMA', 'Pearl', 'Promark', 'Vic Firth']}/>
         </ListItem>
         <ListItem className={classes.refineRabel}>
           <ListItemIcon className={classes.icon}>
