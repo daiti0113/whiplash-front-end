@@ -72,7 +72,7 @@ export default function TemporaryDrawer(props) {
           <ListItemText primary="価格" />
         </ListItem>
         <ListItem className={classes.refineInput}>
-          <RangeSlider></RangeSlider>
+          <RangeSlider />
         </ListItem>
         <ListItem className={classes.refineRabel}>
           <ListItemIcon className={classes.icon}>
@@ -90,7 +90,7 @@ export default function TemporaryDrawer(props) {
           <ListItemText primary="重さ" />
         </ListItem>
         <ListItem className={classes.refineInput}>
-          <RangeSlider></RangeSlider>
+          <RangeSlider />
         </ListItem>
 
       </List>
