@@ -7,6 +7,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 import Typography from '@material-ui/core/Typography';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import Collapse from '@material-ui/core/Collapse';
 import RangeSlider from './RangeSlider';
 import CheckboxesGroup from './CheckBoxesGroup';
 
@@ -15,9 +18,11 @@ const useStyles = makeStyles(theme => ({
     width: 250,
   },
   title: {
-    paddingTop: 8,
-    paddingLeft: 16,
-    paddingBottom: 16,
+    paddingTop: 4,
+    paddingBottom: 4,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     
   },
   fullList: {
@@ -62,36 +67,44 @@ export default function TemporaryDrawer(props) {
       role="presentation"
     >
       <List>
-        <Typography variant="h6" className={classes.title}>
-            絞り込み
-        </Typography>
-        <ListItem className={classes.refineRabel}>
-          <ListItemIcon className={classes.icon}>
-            <LocalAtmIcon />
-          </ListItemIcon>
-          <ListItemText primary="価格" />
+        <ListItem button onClick={handleNestedListOpen}>
+          <Typography variant="h6" className={classes.title}>
+              絞り込み
+              {nestedListOpen ? <ExpandLess fontSize="large"/> : <ExpandMore fontSize="large"/>}
+          </Typography>
         </ListItem>
-        <ListItem className={classes.refineInput}>
-          <RangeSlider />
-        </ListItem>
-        <ListItem className={classes.refineRabel}>
-          <ListItemIcon className={classes.icon}>
-            <LocalAtmIcon />
-          </ListItemIcon>
-          <ListItemText primary="長さ" />
-        </ListItem>
-        <ListItem className={classes.refineInput}>
-          <CheckboxesGroup list={['TAMA', 'Pearl', 'Promark', 'Vic Firth']}/>
-        </ListItem>
-        <ListItem className={classes.refineRabel}>
-          <ListItemIcon className={classes.icon}>
-            <LocalAtmIcon />
-          </ListItemIcon>
-          <ListItemText primary="重さ" />
-        </ListItem>
-        <ListItem className={classes.refineInput}>
-          <RangeSlider />
-        </ListItem>
+        <Collapse in={nestedListOpen} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+          <ListItem className={classes.refineRabel}>
+            <ListItemIcon className={classes.icon}>
+              <LocalAtmIcon />
+            </ListItemIcon>
+            <ListItemText primary="価格" />
+          </ListItem>
+          <ListItem className={classes.refineInput}>
+            <RangeSlider />
+          </ListItem>
+          <ListItem className={classes.refineRabel}>
+            <ListItemIcon className={classes.icon}>
+              <LocalAtmIcon />
+            </ListItemIcon>
+            <ListItemText primary="長さ" />
+          </ListItem>
+          <ListItem className={classes.refineInput}>
+            <CheckboxesGroup list={['TAMA', 'Pearl', 'Promark', 'Vic Firth']}/>
+          </ListItem>
+          <ListItem className={classes.refineRabel}>
+            <ListItemIcon className={classes.icon}>
+              <LocalAtmIcon />
+            </ListItemIcon>
+            <ListItemText primary="重さ" />
+          </ListItem>
+          <ListItem className={classes.refineInput}>
+            <RangeSlider />
+          </ListItem>
+        </List>
+      </Collapse>
+        
 
       </List>
     </div>
