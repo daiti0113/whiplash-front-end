@@ -40,7 +40,7 @@ function handleChange(event) {
 }
 
 function handleClick() {
-    props.setRefineMenuOpen(true);
+    props.setSearchMenuOpen(true);
 }
 
 return (

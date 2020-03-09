@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import ItemList from './ItemList';
-import RefineMenu from './RefineMenu';
+import SearchMenu from './SearchMenu';
 import SearchInput from './SearchInput';
 
 
 export default function Search() {
     const [keywords, setKeywords] = useState([]); 
-    const [refineMenuOpen, setRefineMenuOpen] = useState(false);
+    const [searchMenuOpen, setSearchMenuOpen] = useState(false);
   
     return (
       <React.Fragment>
-        <SearchInput setKeywords={setKeywords} setRefineMenuOpen={setRefineMenuOpen} />
-        <RefineMenu refineMenuOpen={refineMenuOpen} setRefineMenuOpen={setRefineMenuOpen}/>
+        <SearchInput setKeywords={setKeywords} setSearchMenuOpen={setSearchMenuOpen} />
+        <SearchMenu searchMenuOpen={searchMenuOpen} setSearchMenuOpen={setSearchMenuOpen}/>
         <ItemList keywords={keywords} />
       </React.Fragment>
     )
