@@ -5,7 +5,7 @@ import List from '@material-ui/core/List';
 import RefineMenu from './RefineMenu';
 import SortMenu from './SortMenu';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   list: {
     width: 250,
   },
@@ -16,14 +16,16 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     alignItems: "center",
   },
-}));
+});
 
 export default function SerchMenu(props) {
+  const {searchMenuOpen} = props.state
+  const {setSearchMenuOpen} = props.setState
   const classes = useStyles();
 
 
   function handleSearchMenuOpen() {
-    props.setSearchMenuOpen(false);
+    setSearchMenuOpen(false);
   }
 
   const sideList = (
@@ -40,7 +42,7 @@ export default function SerchMenu(props) {
 
   return (
     <div>
-      <Drawer anchor="right" open={props.searchMenuOpen} onClose={handleSearchMenuOpen}>
+      <Drawer anchor="right" open={searchMenuOpen} onClose={handleSearchMenuOpen}>
         {sideList}
       </Drawer>
     </div>

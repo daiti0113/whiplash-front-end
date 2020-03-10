@@ -12,7 +12,7 @@ import Collapse from '@material-ui/core/Collapse';
 import RangeSlider from './RangeSlider';
 import CheckboxesGroup from './CheckBoxesGroup';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   title: {
     paddingTop: 4,
     paddingBottom: 4,
@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
   icon: {
     minWidth: 32,
   }
-}));
+});
 
 
 export default function RefineMenu() {
