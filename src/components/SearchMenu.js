@@ -34,7 +34,7 @@ export default function SerchMenu(props) {
       role="presentation"
     >
       <List>
-        <RefineMenu />
+        <RefineMenu {...props}/>
         <SortMenu />
       </List>
     </div>

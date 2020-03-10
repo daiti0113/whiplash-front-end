@@ -1,25 +1,38 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
 
-function valuetext(value) {
-  return `${value}°C`;
+function valuetext(state) {
+  return `${state}°C`;
+}
+
+const config = {
+  price: {
+    step: 100,
+    min: 100,
+    max: 2000,
+  },
+  weight: {
+    step: 10,
+    min: 10,
+    max: 50,
+  }
 }
 
 export default function RangeSlider(props) {
-  const [value, setValue] = React.useState([20, 37]);
+  const {type, state, setState} = props;
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setState(newValue);
   };
 
   return (
       <Slider
-        value={value}
+        value={state}
         onChange={handleChange}
         valueLabelDisplay="auto"
-        aria-labelledby="range-slider"
+        aria-labelledby={type}
         getAriaValueText={valuetext}
+        {...config[type]}
       />
   );
 }

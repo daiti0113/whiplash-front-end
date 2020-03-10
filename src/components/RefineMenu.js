@@ -35,14 +35,15 @@ const useStyles = makeStyles({
 });
 
 
-export default function RefineMenu() {
+export default function RefineMenu(props) {
+  const {price, manufacturer, length, weight, material, tipMaterial, tipShape, taper} = props.state;
+  const {setPrice, setManufacturer, setLength, setWeight, setMaterial, setTipMaterial, setTipShape, setTaper} = props.setState;
   const classes = useStyles();
   const [refineNestOpen, setRefineNestOpen] = useState(true);
   
   function handleRefineNestOpen() {
     setRefineNestOpen(!refineNestOpen);
   };
-    
 
   return (
     <React.Fragment>
@@ -61,7 +62,7 @@ export default function RefineMenu() {
         <ListItemText primary="価格" />
       </ListItem>
       <ListItem className={classes.refineInput}>
-        <RangeSlider />
+        <RangeSlider type="price" state={price} setState={setPrice}/>
       </ListItem>
       <ListItem className={classes.refineRabel}>
         <ListItemIcon className={classes.icon}>
@@ -79,7 +80,7 @@ export default function RefineMenu() {
         <ListItemText primary="重さ" />
       </ListItem>
       <ListItem className={classes.refineInput}>
-        <RangeSlider />
+        <RangeSlider type="weight" state={weight} setState={setWeight}/>
       </ListItem>
       </List>
       </Collapse>
