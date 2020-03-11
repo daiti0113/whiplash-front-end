@@ -33,28 +33,29 @@ const useStyles = makeStyles(theme => ({
 }));
   
 export default function SearchInput(props) {
-const classes = useStyles();
+  const {setKeywords, setSearchMenuOpen} = props.setState;
+  const classes = useStyles();
 
-function handleChange(event) {
-    props.setKeywords(event.target.value);
-}
+  function handleChange(event) {
+      setKeywords(event.target.value);
+  }
 
-function handleClick() {
-    props.setRefineMenuOpen(true);
-}
+  function handleClick() {
+      setSearchMenuOpen(true);
+  }
 
-return (
-    <Paper component="form" className={classes.root}>
-    <InputBase
-        className={classes.input}
-        placeholder="キーワードで検索"
-        onChange={handleChange}
-    />
-    <SearchIcon className={classes.SearchIcon}/>
-    <Divider className={classes.divider} orientation="vertical" />
-    <IconButton color="primary" className={classes.iconButton} aria-label="tune" onClick={handleClick}>
-        <TuneIcon />
-    </IconButton>
-    </Paper>
-);
+  return (
+      <Paper component="form" className={classes.root}>
+      <InputBase
+          className={classes.input}
+          placeholder="キーワードで検索"
+          onChange={handleChange}
+      />
+      <SearchIcon className={classes.SearchIcon}/>
+      <Divider className={classes.divider} orientation="vertical" />
+      <IconButton color="primary" className={classes.iconButton} aria-label="tune" onClick={handleClick}>
+          <TuneIcon />
+      </IconButton>
+      </Paper>
+  );
 }

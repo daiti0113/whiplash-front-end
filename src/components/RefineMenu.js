@@ -1,77 +1,89 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import Collapse from '@material-ui/core/Collapse';
-import StarBorder from '@material-ui/icons/StarBorder';
+import LocalAtmIcon from '@material-ui/icons/LocalAtm';
+import Typography from '@material-ui/core/Typography';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import Collapse from '@material-ui/core/Collapse';
+import RangeSlider from './RangeSlider';
+import CheckboxesGroup from './CheckBoxesGroup';
 
-const useStyles = makeStyles(theme => ({
-  list: {
-    width: 250,
+const useStyles = makeStyles({
+  title: {
+    paddingTop: 4,
+    paddingBottom: 4,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    
   },
-  fullList: {
-    width: 'auto',
+  refineRabel: {
+    paddingTop: 0,
+    paddingBottom: 0,
   },
-  root: {
-    width: '100%',
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+  refineInput: {
+    paddingTop: 0,
+    paddingBottom: 0,
   },
-  nested: {
-    paddingLeft: theme.spacing(4),
-  },
-}));
+  icon: {
+    minWidth: 32,
+  }
+});
 
-export default function TemporaryDrawer(props) {
+
+export default function RefineMenu(props) {
+  const {price, manufacturer, length, weight, material, tipMaterial, tipShape, taper} = props.state;
+  const {setPrice, setManufacturer, setLength, setWeight, setMaterial, setTipMaterial, setTipShape, setTaper} = props.setState;
   const classes = useStyles();
-  const [nestedListOpen, setNestedListOpen] = React.useState(false);
-
-  function handleNestedListOpen() {
-    setNestedListOpen(!nestedListOpen);
+  const [refineNestOpen, setRefineNestOpen] = useState(true);
+  
+  function handleRefineNestOpen() {
+    setRefineNestOpen(!refineNestOpen);
   };
 
-  function handleRefineMenuOpen() {
-    props.setRefineMenuOpen(false);
-  }
-
-  const sideList = (
-    <div
-      className={classes.list}
-      role="presentation"
-    >
-      <List>
-        <ListItem button onClick={handleNestedListOpen}>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Inbox" />
-          {nestedListOpen ? <ExpandLess /> : <ExpandMore />}
-        </ListItem>
-        <Collapse in={nestedListOpen} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItem button className={classes.nested}>
-              <ListItemIcon>
-                <StarBorder />
-              </ListItemIcon>
-              <ListItemText primary="Starred" />
-            </ListItem>
-          </List>
-        </Collapse>
-      </List>
-    </div>
-  );
-
   return (
-    <div>
-      <Drawer anchor="right" open={props.refineMenuOpen} onClose={handleRefineMenuOpen}>
-        {sideList}
-      </Drawer>
-    </div>
-  );
+    <React.Fragment>
+      <ListItem button onClick={handleRefineNestOpen}>
+      <Typography variant="h6" className={classes.title}>
+          絞り込み
+          {refineNestOpen ? <ExpandLess fontSize="large"/> : <ExpandMore fontSize="large"/>}
+      </Typography>
+      </ListItem>
+      <Collapse in={refineNestOpen} timeout="auto" unmountOnExit>
+      <List component="div" disablePadding>
+      <ListItem className={classes.refineRabel}>
+        <ListItemIcon className={classes.icon}>
+          <LocalAtmIcon />
+        </ListItemIcon>
+        <ListItemText primary="価格" />
+      </ListItem>
+      <ListItem className={classes.refineInput}>
+        <RangeSlider type="price" state={price} setState={setPrice}/>
+      </ListItem>
+      <ListItem className={classes.refineRabel}>
+        <ListItemIcon className={classes.icon}>
+          <LocalAtmIcon />
+        </ListItemIcon>
+        <ListItemText primary="長さ" />
+      </ListItem>
+      <ListItem className={classes.refineInput}>
+        <CheckboxesGroup list={['TAMA', 'Pearl', 'Promark', 'Vic Firth']}/>
+      </ListItem>
+      <ListItem className={classes.refineRabel}>
+        <ListItemIcon className={classes.icon}>
+          <LocalAtmIcon />
+        </ListItemIcon>
+        <ListItemText primary="重さ" />
+      </ListItem>
+      <ListItem className={classes.refineInput}>
+        <RangeSlider type="weight" state={weight} setState={setWeight}/>
+      </ListItem>
+      </List>
+      </Collapse>
+    </React.Fragment>
+  )
 }

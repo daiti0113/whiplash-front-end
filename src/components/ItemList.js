@@ -35,6 +35,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function ItemList(props) {
+  const {keywords} = props.state;
   const classes = useStyles();
   const [items, setItems] = useState([]);
   const [foundItems, setFoundItems] = useState([]); 
@@ -49,16 +50,16 @@ export default function ItemList(props) {
   }, []); // 第２引数の変数が更新されると、フックが実行される(APIへのリクエストを行う)。
 
   useEffect(() => {
-    if (props.keywords === '') {
+    if (keywords === '') {
       setFoundItems(items);
     } else {
       setFoundItems(items.filter(function(item){
         for (let key in item) {
-          if (String(item[key]).indexOf(props.keywords) !== -1) return true;
+          if (String(item[key]).indexOf(keywords) !== -1) return true;
         }
       }));  
     }
-  }, [props.keywords]);
+  }, [keywords]);
 
   return (
     <List className={classes.root}>
