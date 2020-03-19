@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import RefineMenu from './RefineMenu';
 import SortMenu from './SortMenu';
+import { store } from '../store';
 
 const useStyles = makeStyles({
   list: {
@@ -18,14 +19,13 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SerchMenu(props) {
-  const {searchMenuOpen} = props.state
-  const {setSearchMenuOpen} = props.setState
+export default function SerchMenu() {
+  const { state, dispatch } = useContext(store);
   const classes = useStyles();
 
 
   function handleSearchMenuOpen() {
-    setSearchMenuOpen(false);
+    dispatch({ type: "UPDATE_SEARCH_MENU_OPEN", payload: false });
   }
 
   const sideList = (
@@ -34,7 +34,7 @@ export default function SerchMenu(props) {
       role="presentation"
     >
       <List>
-        <RefineMenu {...props}/>
+        <RefineMenu />
         <SortMenu />
       </List>
     </div>
@@ -42,7 +42,7 @@ export default function SerchMenu(props) {
 
   return (
     <div>
-      <Drawer anchor="right" open={searchMenuOpen} onClose={handleSearchMenuOpen}>
+      <Drawer anchor="right" open={state.searchMenuOpen} onClose={handleSearchMenuOpen}>
         {sideList}
       </Drawer>
     </div>

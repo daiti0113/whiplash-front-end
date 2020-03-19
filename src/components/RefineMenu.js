@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -11,6 +11,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
 import RangeSlider from './RangeSlider';
 import CheckboxesGroup from './CheckBoxesGroup';
+import { store } from '../store'
 
 const useStyles = makeStyles({
   title: {
@@ -35,18 +36,16 @@ const useStyles = makeStyles({
 });
 
 
-export default function RefineMenu(props) {
-  const {price, manufacturer, length, weight, material, tipMaterial, tipShape, taper} = props.state;
-  const {setPrice, setManufacturer, setLength, setWeight, setMaterial, setTipMaterial, setTipShape, setTaper} = props.setState;
+export default function RefineMenu() {
   const classes = useStyles();
-  const [refineNestOpen, setRefineNestOpen] = useState(true);
+  const [refineNestOpen, setRefineNestOpen] = useState(true)
   
   function handleRefineNestOpen() {
     setRefineNestOpen(!refineNestOpen);
   };
 
   return (
-    <React.Fragment>
+    <React. Fragment>
       <ListItem button onClick={handleRefineNestOpen}>
       <Typography variant="h6" className={classes.title}>
           絞り込み
@@ -62,7 +61,7 @@ export default function RefineMenu(props) {
         <ListItemText primary="価格" />
       </ListItem>
       <ListItem className={classes.refineInput}>
-        <RangeSlider type="price" state={price} setState={setPrice}/>
+        <RangeSlider type="price"/>
       </ListItem>
       <ListItem className={classes.refineRabel}>
         <ListItemIcon className={classes.icon}>
@@ -80,7 +79,7 @@ export default function RefineMenu(props) {
         <ListItemText primary="重さ" />
       </ListItem>
       <ListItem className={classes.refineInput}>
-        <RangeSlider type="weight" state={weight} setState={setWeight}/>
+        <RangeSlider type="weight"/>
       </ListItem>
       </List>
       </Collapse>

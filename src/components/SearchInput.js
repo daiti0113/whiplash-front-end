@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
@@ -6,6 +6,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import TuneIcon from '@material-ui/icons/Tune';
+import { store } from '../store';
 
 
 const useStyles = makeStyles(theme => ({
@@ -32,16 +33,16 @@ const useStyles = makeStyles(theme => ({
     }
 }));
   
-export default function SearchInput(props) {
-  const {setKeywords, setSearchMenuOpen} = props.setState;
+export default function SearchInput() {
+  const { state, dispatch } = useContext(store);
   const classes = useStyles();
 
   function handleChange(event) {
-      setKeywords(event.target.value);
+    dispatch({ type: "UPDATE_KEYWORDS", payload: event.target.value });
   }
 
   function handleClick() {
-      setSearchMenuOpen(true);
+    dispatch({ type: "UPDATE_SEARCH_MENU_OPEN", payload: true });
   }
 
   return (

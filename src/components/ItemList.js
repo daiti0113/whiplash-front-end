@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -8,6 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import requestAPI from '../api';
 import images from '../../assets/images/Pearl/*.jpg'
 import Rating from '@material-ui/lab/Rating';
+import { store } from '../store';
 
 
 const useStyles = makeStyles(theme => ({
@@ -34,36 +35,41 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ItemList(props) {
-  const {keywords} = props.state;
+export default function ItemList() {
   const classes = useStyles();
-  const [items, setItems] = useState([]);
-  const [foundItems, setFoundItems] = useState([]); 
+  const { state, dispatch } = useContext(store);
 
   useEffect(() => {
     const fetchData = async() => {
       const response = await requestAPI('GET', '/item');
-      setItems(response.data);
-      setFoundItems(response.data);
+      dispatch({ type: "UPDATE_ITEMS", payload: response.data });
+      dispatch({ type: "UPDATE_FOUND_ITEMS", payload: response.data });
     };
     fetchData();
   }, []); // 第２引数の変数が更新されると、フックが実行される(APIへのリクエストを行う)。
 
   useEffect(() => {
-    if (keywords === '') {
-      setFoundItems(items);
+    if (store.keywords === '') {
+      dispatch({ type: "UPDATE_FOUND_ITEMS", payload: state.items });
     } else {
-      setFoundItems(items.filter(function(item){
-        for (let key in item) {
-          if (String(item[key]).indexOf(keywords) !== -1) return true;
-        }
-      }));  
+      dispatch({ type: "UPDATE_FOUND_ITEMS", payload: searchItems() });
     }
-  }, [keywords]);
+  }, [store.keywords]);
+
+  const searchItems = () => {
+    return (
+      state.items.filter((item) => {
+        for (let key in item) {
+          if (String(item[key]).indexOf(store.keywords) !== -1) return true;
+        }
+      })
+    );
+  }
 
   return (
     <List className={classes.root}>
-      {foundItems.map(item => (
+      {console.log(state.foundItems)}
+      {state.foundItems.map(item => (
         <React.Fragment key={item.id}>
           <ListItem className={classes.listItem} alignItems="flex-start">
             <ListItemAvatar>

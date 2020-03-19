@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Slider from '@material-ui/core/Slider';
+import { store } from '../store';
 
 const config = {
   price: {
@@ -15,15 +16,17 @@ const config = {
 }
 
 export default function RangeSlider(props) {
-  const {type, state, setState} = props;
+  const { type } = props;
+  const { state, dispatch } = useContext(store);
 
   const handleChange = (event, newValue) => {
-    setState(newValue);
+    dispatch({ type: "UPDATE_PRICE", payload: newValue });
   };
+  console.log(state.price)
 
   return (
       <Slider
-        value={state}
+        value={state.price}
         onChange={handleChange}
         valueLabelDisplay="auto"
         aria-labelledby={type}
