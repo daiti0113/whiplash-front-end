@@ -68,7 +68,6 @@ export default function ItemList() {
 
   return (
     <List className={classes.root}>
-      {console.log(state.foundItems)}
       {state.foundItems.map(item => (
         <React.Fragment key={item.id}>
           <ListItem className={classes.listItem} alignItems="flex-start">

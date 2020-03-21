@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const base_url = 'http://localhost:3001';
+const base_url = process.env.API_ROOT;
 
 export default function requestAPI(method, endpoint, params = []) {
     let res = {};

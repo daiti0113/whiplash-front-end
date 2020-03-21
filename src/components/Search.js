@@ -4,6 +4,7 @@ import SearchMenu from './SearchMenu';
 import SearchInput from './SearchInput';
 
 
+
 export default function Search() {
     return (
       <React.Fragment>

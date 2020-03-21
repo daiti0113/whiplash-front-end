@@ -22,7 +22,6 @@ export default function RangeSlider(props) {
   const handleChange = (event, newValue) => {
     dispatch({ type: "UPDATE_PRICE", payload: newValue });
   };
-  console.log(state.price)
 
   return (
       <Slider
