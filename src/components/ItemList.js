@@ -49,18 +49,18 @@ export default function ItemList() {
   }, []); // 第２引数の変数が更新されると、フックが実行される(APIへのリクエストを行う)。
 
   useEffect(() => {
-    if (store.keywords === '') {
+    if (state.keywords === '') {
       dispatch({ type: "UPDATE_FOUND_ITEMS", payload: state.items });
     } else {
       dispatch({ type: "UPDATE_FOUND_ITEMS", payload: searchItems() });
     }
-  }, [store.keywords]);
+  }, [state.keywords]);
 
   const searchItems = () => {
     return (
       state.items.filter((item) => {
         for (let key in item) {
-          if (String(item[key]).indexOf(store.keywords) !== -1) return true;
+          if (String(item[key]).indexOf(state.keywords) !== -1) return true;
         }
       })
     );
