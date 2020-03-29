@@ -43,7 +43,6 @@ export default function ItemList() {
 
 
   useEffect(() => {
-    console.log("fetchRuned!!")
     const fetchData = async() => {
       const response = await requestAPI('GET', '/item');
       setItems(response.data);
@@ -53,7 +52,6 @@ export default function ItemList() {
   }, []); // 第２引数の変数が更新されると、フックが実行される(APIへのリクエストを行う)。
 
   useEffect(() => {
-    console.log("setFounditemsRuned!!")
     if (state.keywords === '') {
       setFoundItems(items);
     } else {

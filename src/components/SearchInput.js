@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, {useContext, useRef} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
@@ -35,11 +35,12 @@ const useStyles = makeStyles(theme => ({
   
 export default function SearchInput() {
   const { state, dispatch } = useContext(store);
+  const inputRef = useRef();
   const classes = useStyles();
 
-  function handleChange(event) {
-    dispatch({ type: "UPDATE_KEYWORDS", payload: event.target.value });
-  }
+  function setKeywords() {
+    dispatch({ type: "UPDATE_KEYWORDS", payload: inputRef.current.children[0].value});
+  };
 
   function handleClick() {
     dispatch({ type: "UPDATE_SEARCH_MENU_OPEN", payload: true });
@@ -50,9 +51,9 @@ export default function SearchInput() {
       <InputBase
           className={classes.input}
           placeholder="キーワードで検索"
-          onChange={handleChange}
+          ref={inputRef}
       />
-      <SearchIcon className={classes.SearchIcon}/>
+      <SearchIcon className={classes.SearchIcon} onClick={setKeywords}/>
       <Divider className={classes.divider} orientation="vertical" />
       <IconButton color="primary" className={classes.iconButton} aria-label="tune" onClick={handleClick}>
           <TuneIcon />
