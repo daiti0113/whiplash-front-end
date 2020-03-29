@@ -11,8 +11,6 @@ const initialState = {
     tipShape: [],
     taper: [],  
     searchMenuOpen: false,
-    items: [],
-    foundItems: [],
  };
 
  // Storeの作成
@@ -36,9 +34,9 @@ const StateProvider = ({ children }) => {
         return { ...state, foundItems: action.payload }
       default:
         return { ...state };
-      };
-    }, initialState);
-    return <Provider value={{ state, dispatch }}>{children}</Provider>;
+    };
+  }, initialState);
+  return <Provider value={{ state, dispatch }}>{children}</Provider>;
 };
 
 export { store, StateProvider }
