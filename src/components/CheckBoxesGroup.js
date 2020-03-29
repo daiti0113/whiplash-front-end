@@ -1,10 +1,11 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {useEffect, useContext} from 'react';
+import {makeStyles} from '@material-ui/core/styles';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import {store} from '../store';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,9 +22,15 @@ export default function CheckboxesGroup(props) {
   const choices = props.list;
   const initialState = Object.assign(...(choices.map(key => ({[key]: false}))))
   const [state, setState] = React.useState(initialState);
+  const {dispatch} = useContext(store);
+
+  useEffect(() => {
+    const checkedList = Object.keys(state).filter((key) => state[key] === true);
+    dispatch({type: "UPDATE_CONDITIONS", payload: {...state.conditions, [props.type]: checkedList}});
+  }, [state]);
 
   const handleChange = name => event => {
-    setState({ ...state, [name]: event.target.checked });
+    setState({...state, [name]: event.target.checked});
   };
 
   return (

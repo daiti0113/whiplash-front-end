@@ -6,7 +6,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import TuneIcon from '@material-ui/icons/Tune';
-import { store } from '../store';
+import {store} from '../store';
 
 
 const useStyles = makeStyles(theme => ({
@@ -34,12 +34,12 @@ const useStyles = makeStyles(theme => ({
 }));
   
 export default function SearchInput() {
-  const { state, dispatch } = useContext(store);
+  const {state, dispatch} = useContext(store);
   const inputRef = useRef();
   const classes = useStyles();
 
   function setKeywords() {
-    dispatch({ type: "UPDATE_KEYWORDS", payload: inputRef.current.children[0].value});
+    dispatch({ type: "UPDATE_CONDITIONS", payload: {...state.conditions, keywords: inputRef.current.children[0].value}});
   };
 
   function handleClick() {

@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -11,7 +11,6 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
 import RangeSlider from './RangeSlider';
 import CheckboxesGroup from './CheckBoxesGroup';
-import { store } from '../store'
 
 const useStyles = makeStyles({
   title: {
@@ -38,7 +37,7 @@ const useStyles = makeStyles({
 
 export default function RefineMenu() {
   const classes = useStyles();
-  const [refineNestOpen, setRefineNestOpen] = useState(true)
+  const [refineNestOpen, setRefineNestOpen] = useState(true);
   
   function handleRefineNestOpen() {
     setRefineNestOpen(!refineNestOpen);
@@ -70,7 +69,7 @@ export default function RefineMenu() {
         <ListItemText primary="長さ" />
       </ListItem>
       <ListItem className={classes.refineInput}>
-        <CheckboxesGroup list={['TAMA', 'Pearl', 'Promark', 'Vic Firth']}/>
+        <CheckboxesGroup list={['TAMA', 'Pearl', 'Promark', 'Vic Firth']} type="manufacturer"/>
       </ListItem>
       <ListItem className={classes.refineRabel}>
         <ListItemIcon className={classes.icon}>

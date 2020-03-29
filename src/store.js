@@ -1,15 +1,17 @@
 import React, { createContext, useReducer } from 'react';
 
 const initialState = {
-    keywords: [],
-    price: [0, 2000],
-    manufacturer: [],
-    length: [],
-    weight: [],
-    material: [],
-    tipMaterial: [],
-    tipShape: [],
-    taper: [],  
+    conditions: {
+      keywords: [],
+      price: [0, 2000],
+      manufacturer: [],
+      length: [],
+      weight: [],
+      material: [],
+      tipMaterial: [],
+      tipShape: [],
+      taper: [],  
+    },
     searchMenuOpen: false,
  };
 
@@ -22,16 +24,10 @@ const StateProvider = ({ children }) => {
   // Reducerの定義
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
-      case 'UPDATE_KEYWORDS':
-        return { ...state, keywords: action.payload }
-      case 'UPDATE_PRICE':
-        return { ...state, price: action.payload }
+      case 'UPDATE_CONDITIONS':
+        return { ...state, conditions: action.payload }
       case 'UPDATE_SEARCH_MENU_OPEN':
         return { ...state, searchMenuOpen: action.payload }
-      case 'UPDATE_ITEMS':
-        return { ...state, items: action.payload }
-      case 'UPDATE_FOUND_ITEMS':
-        return { ...state, foundItems: action.payload }
       default:
         return { ...state };
     };

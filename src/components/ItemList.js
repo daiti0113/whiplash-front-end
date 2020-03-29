@@ -40,7 +40,7 @@ export default function ItemList() {
   const [items, setItems] = useState([]);
   const [foundItems, setFoundItems] = useState([]);
   const {state} = useContext(store);
-
+  const conditions = state.conditions;
 
   useEffect(() => {
     const fetchData = async() => {
@@ -52,18 +52,19 @@ export default function ItemList() {
   }, []); // 第２引数の変数が更新されると、フックが実行される(APIへのリクエストを行う)。
 
   useEffect(() => {
-    if (state.keywords === '') {
+    if (conditions.keywords === '') {
       setFoundItems(items);
     } else {
       setFoundItems(searchItems());
     }
-  }, [state.keywords]);
+  }, [conditions]);
 
   const searchItems = () => {
     return (
       items.filter((item) => {
+        if (conditions.manufacturer.length && conditions.manufacturer.indexOf(item['manufacturer']) === -1) return false;
         for (let key in item) {
-          if (String(item[key]).indexOf(state.keywords) !== -1) return true;
+          if (!conditions.keywords || String(item[key]).indexOf(conditions.keywords) !== -1) return true;
         }
       })
     );
