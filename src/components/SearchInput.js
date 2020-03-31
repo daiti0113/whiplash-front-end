@@ -20,16 +20,19 @@ const useStyles = makeStyles(theme => ({
       marginLeft: theme.spacing(1),
       flex: 1,
     },
-    iconButton: {
+    refineMenuButton: {
       padding: 10,
     },
     divider: {
       height: 28,
       margin: 4,
     },
-    SearchIcon: {
+    searchIcon: {
       color: '#707070',
       padding: 10,
+    },
+    searchButton: {
+      padding: [[0], '!important'],
     }
 }));
   
@@ -38,7 +41,7 @@ export default function SearchInput() {
   const inputRef = useRef();
   const classes = useStyles();
 
-  function setKeywords() {
+  function setKeywords(e) {
     dispatch({ type: "UPDATE_CONDITIONS", payload: {...state.conditions, keywords: inputRef.current.children[0].value}});
   };
 
@@ -53,9 +56,11 @@ export default function SearchInput() {
           placeholder="キーワードで検索"
           ref={inputRef}
       />
-      <SearchIcon className={classes.SearchIcon} onClick={setKeywords}/>
+      <IconButton className={classes.searchButton} aria-label="search" onClick={setKeywords}>
+        <SearchIcon className={classes.searchIcon} aria-label="search"/>
+      </IconButton>
       <Divider className={classes.divider} orientation="vertical" />
-      <IconButton color="primary" className={classes.iconButton} aria-label="tune" onClick={handleClick}>
+      <IconButton color="primary" className={classes.refineMenuButton} aria-label="refine" onClick={handleClick}>
           <TuneIcon />
       </IconButton>
       </Paper>
