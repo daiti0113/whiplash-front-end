@@ -45,41 +45,42 @@ export default function RefineMenu() {
 
   return (
     <React. Fragment>
-      <ListItem button onClick={handleRefineNestOpen}>
-      <Typography variant="h6" className={classes.title}>
-          絞り込み
-          {refineNestOpen ? <ExpandLess fontSize="large"/> : <ExpandMore fontSize="large"/>}
-      </Typography>
+      <ListItem button key="title-refine" onClick={handleRefineNestOpen}>
+        <Typography variant="h6" className={classes.title}>
+            絞り込み
+            {refineNestOpen ? <ExpandLess fontSize="large"/> : <ExpandMore fontSize="large"/>}
+        </Typography>
       </ListItem>
+
       <Collapse in={refineNestOpen} timeout="auto" unmountOnExit>
       <List component="div" disablePadding>
-      <ListItem className={classes.refineRabel}>
-        <ListItemIcon className={classes.icon}>
-          <LocalAtmIcon />
-        </ListItemIcon>
-        <ListItemText primary="価格" />
-      </ListItem>
-      <ListItem className={classes.refineInput}>
-        <RangeSlider type="price"/>
-      </ListItem>
-      <ListItem className={classes.refineRabel}>
-        <ListItemIcon className={classes.icon}>
-          <LocalAtmIcon />
-        </ListItemIcon>
-        <ListItemText primary="長さ" />
-      </ListItem>
-      <ListItem className={classes.refineInput}>
-        <CheckboxesGroup list={['TAMA', 'Pearl', 'Promark', 'Vic Firth']} type="manufacturer"/>
-      </ListItem>
-      <ListItem className={classes.refineRabel}>
-        <ListItemIcon className={classes.icon}>
-          <LocalAtmIcon />
-        </ListItemIcon>
-        <ListItemText primary="重さ" />
-      </ListItem>
-      <ListItem className={classes.refineInput}>
-        <RangeSlider type="weight"/>
-      </ListItem>
+        <ListItem className={classes.refineRabel}>
+          <ListItemIcon className={classes.icon}>
+            <LocalAtmIcon />
+          </ListItemIcon>
+          <ListItemText primary="価格" />
+        </ListItem>
+        <ListItem className={classes.refineInput}>
+          <RangeSlider type="price"/>
+        </ListItem>
+        <ListItem className={classes.refineRabel}>
+          <ListItemIcon className={classes.icon}>
+            <LocalAtmIcon />
+          </ListItemIcon>
+          <ListItemText primary="長さ" />
+        </ListItem>
+        <ListItem className={classes.refineInput}>
+          <CheckboxesGroup type="manufacturer"/>
+        </ListItem>
+        <ListItem className={classes.refineRabel}>
+          <ListItemIcon className={classes.icon}>
+            <LocalAtmIcon />
+          </ListItemIcon>
+          <ListItemText primary="重さ" />
+        </ListItem>
+        <ListItem className={classes.refineInput}>
+          <RangeSlider type="weight"/>
+        </ListItem>
       </List>
       </Collapse>
     </React.Fragment>

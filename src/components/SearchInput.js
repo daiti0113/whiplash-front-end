@@ -48,7 +48,7 @@ export default function SearchInput() {
   function handleClick() {
     dispatch({ type: "UPDATE_SEARCH_MENU_OPEN", payload: true });
   }
-
+// TODO: onSubmitも追加して
   return (
       <Paper component="form" className={classes.root}>
       <InputBase
@@ -57,7 +57,7 @@ export default function SearchInput() {
           ref={inputRef}
       />
       <IconButton className={classes.searchButton} aria-label="search" onClick={setKeywords}>
-        <SearchIcon className={classes.searchIcon} aria-label="search"/>
+        <SearchIcon className={classes.searchIcon}/>
       </IconButton>
       <Divider className={classes.divider} orientation="vertical" />
       <IconButton color="primary" className={classes.refineMenuButton} aria-label="refine" onClick={handleClick}>

@@ -4,13 +4,18 @@ const initialState = {
     conditions: {
       keywords: [],
       price: [0, 2000],
-      manufacturer: [],
+      manufacturer: {
+        tama: {display: 'TAMA', checked: false},
+        pearl: {display: 'Pearl', checked: false},
+        promark: {display: 'Promark', checked: false},
+        vicFirth: {display: 'Vic Firth', checked: false},
+      },
       length: [],
-      weight: [],
+      weight: [0, 500],
       material: [],
       tipMaterial: [],
       tipShape: [],
-      taper: [],  
+      taper: [],
     },
     searchMenuOpen: false,
  };

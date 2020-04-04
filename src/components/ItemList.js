@@ -60,9 +60,11 @@ export default function ItemList() {
   }, [conditions]);
 
   const searchItems = () => {
+    const checkedManufacturerList = Object.entries(state.conditions.manufacturer).map(m => m[1].checked ? m[1].display : false).filter(m => m);
+
     return (
       items.filter((item) => {
-        if (conditions.manufacturer.length && conditions.manufacturer.indexOf(item['manufacturer']) === -1) return false;
+        if (checkedManufacturerList.length && checkedManufacturerList.indexOf(item['manufacturer']) === -1) return false;
         for (let key in item) {
           if (!conditions.keywords || String(item[key]).indexOf(conditions.keywords) !== -1) return true;
         }
@@ -70,7 +72,7 @@ export default function ItemList() {
     );
   }
 
-  const listItems = useMemo(() => foundItems.map(item => //TODO:２回レンダーされている原因を突き止める。useEffectsは１回しか動いていない。
+  const listItems = useMemo(() => foundItems.map(item =>
     <React.Fragment key={item.id}>
       <ListItem className={classes.listItem} alignItems="flex-start">
         <ListItemAvatar>

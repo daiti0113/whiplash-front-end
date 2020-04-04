@@ -1,6 +1,5 @@
-import React, {useEffect, useContext} from 'react';
+import React, {useContext} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -19,28 +18,21 @@ const useStyles = makeStyles(theme => ({
 
 export default function CheckboxesGroup(props) {
   const classes = useStyles();
-  const choices = props.list;
-  const initialState = Object.assign(...(choices.map(key => ({[key]: false}))))
-  const [state, setState] = React.useState(initialState);
-  const {dispatch} = useContext(store);
+  const {state, dispatch} = useContext(store);
+  const conditions = state.conditions;
 
-  useEffect(() => {
-    const checkedList = Object.keys(state).filter((key) => state[key] === true);
-    dispatch({type: "UPDATE_CONDITIONS", payload: {...state.conditions, [props.type]: checkedList}});
-  }, [state]);
-
-  const handleChange = name => event => {
-    setState({...state, [name]: event.target.checked});
-  };
+  const handleChange = key => event => {
+    const newState = {...conditions.manufacturer, [key]: {...conditions.manufacturer[key], checked: event.target.checked}}
+    dispatch({type: "UPDATE_CONDITIONS", payload: {...state.conditions, [props.type]: newState}});  };
 
   return (
     <div className={classes.root}>
       <FormControl component="fieldset" className={classes.formControl}>
         <FormGroup>
-          {Object.entries(state).map(([key, value]) => (
+          {Object.entries(state.conditions.manufacturer).map(([key, value]) => (
             <FormControlLabel key={key}
-                control={<Checkbox checked={value} onChange={handleChange(key)} value={key}/>}
-                label={key}
+                control={<Checkbox checked={value.checked} onChange={handleChange(key)} value={key}/>}
+                label={value.display}
             />
           ))}
         </FormGroup>
