@@ -60,16 +60,16 @@ export default function ItemList() {
   }, [conditions]);
 
   const searchItems = () => {
-    const checkedManufacturerList = Object.entries(state.conditions.manufacturer).map(m => m[1].checked ? m[1].display : false).filter(m => m);
+    const checkedManufacturerList = Object.entries(conditions.manufacturer).map(m => m[1].checked ? m[1].display : false).filter(m => m);
+    const result = items.filter((item) => {
+      if (checkedManufacturerList.length && checkedManufacturerList.indexOf(item.manufacturer) === -1) return false;
+      if (item.price < conditions.price[0] || item.price > conditions.price[1]) return false;
+      for (let key in item) {
+        if (!conditions.keywords || String(item[key]).indexOf(conditions.keywords) !== -1) return true;
+      }
+    });
 
-    return (
-      items.filter((item) => {
-        if (checkedManufacturerList.length && checkedManufacturerList.indexOf(item['manufacturer']) === -1) return false;
-        for (let key in item) {
-          if (!conditions.keywords || String(item[key]).indexOf(conditions.keywords) !== -1) return true;
-        }
-      })
-    );
+    return result;
   }
 
   const listItems = useMemo(() => foundItems.map(item =>
