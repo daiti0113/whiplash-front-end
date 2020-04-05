@@ -35,7 +35,11 @@ const initialState = {
         acorn: {display: 'Acorn', checked: false},
         other: {display: 'Other', checked: false}        
       },
-      taper: [],
+      taper: {
+        s: {display: 'S', checked: false},
+        m: {display: 'M', checked: false},
+        l: {display: 'L', checked: false},
+      },
     },
     searchMenuOpen: false,
  };
