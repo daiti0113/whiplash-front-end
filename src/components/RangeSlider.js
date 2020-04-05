@@ -53,8 +53,24 @@ const config = {
     ],
     "data-pos": "back",
     "data-label": "mm",
-
-  }
+  },
+  evaluation: {
+    step: 0.5,
+    min: 1,
+    max: 5,
+    marks: [
+      {
+        value: 1,
+        label: '1',
+      },
+      {
+        value: 5,
+        label: '5',
+      },
+    ],
+    "data-pos": "back",
+    "data-label": "~",
+  },
 }
 
 const valueText = (config) => (value) => config["data-pos"] === "front" ? `${config["data-label"]}${value}` : `${value}${config["data-label"]}`;

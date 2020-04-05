@@ -126,6 +126,15 @@ export default function RefineMenu() {
         <ListItem className={classes.refineInput}>
           <CheckboxesGroup type="taper"/>
         </ListItem>
+        <ListItem className={classes.refineRabel}>
+          <ListItemIcon className={classes.icon}>
+            <LocalAtmIcon />
+          </ListItemIcon>
+          <ListItemText primary="評価" />
+        </ListItem>
+        <ListItem className={classes.refineInput}>
+          <RangeSlider type="evaluation"/>
+        </ListItem>
       </List>
       </Collapse>
     </React.Fragment>

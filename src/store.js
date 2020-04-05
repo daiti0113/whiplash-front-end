@@ -40,6 +40,7 @@ const initialState = {
         m: {display: 'M', checked: false},
         l: {display: 'L', checked: false},
       },
+      evaluation: 1,
     },
     searchMenuOpen: false,
  };
