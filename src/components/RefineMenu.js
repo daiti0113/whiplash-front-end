@@ -90,6 +90,15 @@ export default function RefineMenu() {
         <ListItem className={classes.refineInput}>
           <RangeSlider type="thickness"/>
         </ListItem>
+        <ListItem className={classes.refineRabel}>
+          <ListItemIcon className={classes.icon}>
+            <LocalAtmIcon />
+          </ListItemIcon>
+          <ListItemText primary="材質" />
+        </ListItem>
+        <ListItem className={classes.refineInput}>
+          <CheckboxesGroup type="material"/>
+        </ListItem>
       </List>
       </Collapse>
     </React.Fragment>

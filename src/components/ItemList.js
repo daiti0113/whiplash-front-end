@@ -61,8 +61,11 @@ export default function ItemList() {
 
   const searchItems = () => {
     const checkedManufacturerList = Object.entries(conditions.manufacturer).map(m => m[1].checked ? m[1].display : false).filter(m => m);
+    const checkedMaterialList = Object.entries(conditions.material).map(m => m[1].checked ? m[1].display : false).filter(m => m);
+
     const result = items.filter((item) => {
       if (checkedManufacturerList.length && checkedManufacturerList.indexOf(item.manufacturer) === -1) return false;
+      if (checkedMaterialList.length && checkedMaterialList.indexOf(item.material) === -1) return false;
       if (item.price < conditions.price[0] || item.price > conditions.price[1]) return false;
       if (item.length < conditions.length[0] || item.length > conditions.length[1]) return false;
       if (item.thickness < conditions.thickness[0] || item.thickness > conditions.thickness[1]) return false;

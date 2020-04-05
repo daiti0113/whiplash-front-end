@@ -20,16 +20,17 @@ export default function CheckboxesGroup(props) {
   const classes = useStyles();
   const {state, dispatch} = useContext(store);
   const conditions = state.conditions;
+  const {type} = props;
 
   const handleChange = key => event => {
-    const newState = {...conditions.manufacturer, [key]: {...conditions.manufacturer[key], checked: event.target.checked}}
+    const newState = {...conditions[type], [key]: {...conditions[type][key], checked: event.target.checked}}
     dispatch({type: "UPDATE_CONDITIONS", payload: {...state.conditions, [props.type]: newState}});  };
 
   return (
     <div className={classes.root}>
       <FormControl component="fieldset" className={classes.formControl}>
         <FormGroup>
-          {Object.entries(state.conditions.manufacturer).map(([key, value]) => (
+          {Object.entries(state.conditions[type]).map(([key, value]) => (
             <FormControlLabel key={key}
                 control={<Checkbox checked={value.checked} onChange={handleChange(key)} value={key}/>}
                 label={value.display}
