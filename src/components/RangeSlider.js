@@ -20,22 +20,22 @@ const config = {
     "data-pos": "front",
     "data-label": "¥",
   },
-  weight: {
-    step: 100,
-    min: 100,
-    max: 500,
+  length: {
+    step: 10,
+    min: 300,
+    max: 400,
     marks: [
       {
-        value: 100,
-        label: '100g',
+        value: 300,
+        label: '300mm',
       },
       {
-        value: 500,
-        label: '500g',
+        value: 400,
+        label: '400mm',
       },
     ],
     "data-pos": "back",
-    "data-label": "g",
+    "data-label": "mm",
   }
 }
 

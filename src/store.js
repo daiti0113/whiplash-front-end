@@ -10,7 +10,7 @@ const initialState = {
         promark: {display: 'Promark', checked: false},
         vicFirth: {display: 'Vic Firth', checked: false},
       },
-      length: [],
+      length: [300, 400],
       weight: [0, 500],
       material: [],
       tipMaterial: [],

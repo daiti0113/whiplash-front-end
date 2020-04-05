@@ -67,7 +67,7 @@ export default function RefineMenu() {
           <ListItemIcon className={classes.icon}>
             <LocalAtmIcon />
           </ListItemIcon>
-          <ListItemText primary="長さ" />
+          <ListItemText primary="メーカー" />
         </ListItem>
         <ListItem className={classes.refineInput}>
           <CheckboxesGroup type="manufacturer"/>
@@ -76,10 +76,10 @@ export default function RefineMenu() {
           <ListItemIcon className={classes.icon}>
             <LocalAtmIcon />
           </ListItemIcon>
-          <ListItemText primary="重さ" />
+          <ListItemText primary="長さ" />
         </ListItem>
         <ListItem className={classes.refineInput}>
-          <RangeSlider type="weight"/>
+          <RangeSlider type="length"/>
         </ListItem>
       </List>
       </Collapse>
