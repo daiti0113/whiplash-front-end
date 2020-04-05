@@ -81,6 +81,15 @@ export default function RefineMenu() {
         <ListItem className={classes.refineInput}>
           <RangeSlider type="length"/>
         </ListItem>
+        <ListItem className={classes.refineRabel}>
+          <ListItemIcon className={classes.icon}>
+            <LocalAtmIcon />
+          </ListItemIcon>
+          <ListItemText primary="太さ" />
+        </ListItem>
+        <ListItem className={classes.refineInput}>
+          <RangeSlider type="thickness"/>
+        </ListItem>
       </List>
       </Collapse>
     </React.Fragment>

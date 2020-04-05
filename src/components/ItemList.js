@@ -65,6 +65,7 @@ export default function ItemList() {
       if (checkedManufacturerList.length && checkedManufacturerList.indexOf(item.manufacturer) === -1) return false;
       if (item.price < conditions.price[0] || item.price > conditions.price[1]) return false;
       if (item.length < conditions.length[0] || item.length > conditions.length[1]) return false;
+      if (item.thickness < conditions.thickness[0] || item.thickness > conditions.thickness[1]) return false;
       for (let key in item) {
         if (!conditions.keywords || String(item[key]).indexOf(conditions.keywords) !== -1) return true;
       }

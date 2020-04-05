@@ -36,6 +36,24 @@ const config = {
     ],
     "data-pos": "back",
     "data-label": "mm",
+  },
+  thickness: {
+    step: 1,
+    min: 7,
+    max: 15,
+    marks: [
+      {
+        value: 7,
+        label: '7mm',
+      },
+      {
+        value: 15,
+        label: '15mm',
+      },
+    ],
+    "data-pos": "back",
+    "data-label": "mm",
+
   }
 }
 

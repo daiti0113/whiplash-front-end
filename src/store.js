@@ -11,6 +11,7 @@ const initialState = {
         vicFirth: {display: 'Vic Firth', checked: false},
       },
       length: [300, 400],
+      thickness: [7, 15],
       weight: [0, 500],
       material: [],
       tipMaterial: [],
