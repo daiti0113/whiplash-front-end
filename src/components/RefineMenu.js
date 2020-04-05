@@ -108,7 +108,15 @@ export default function RefineMenu() {
         <ListItem className={classes.refineInput}>
           <CheckboxesGroup type="tipMaterial"/>
         </ListItem>
-
+        <ListItem className={classes.refineRabel}>
+          <ListItemIcon className={classes.icon}>
+            <LocalAtmIcon />
+          </ListItemIcon>
+          <ListItemText primary="チップ形状" />
+        </ListItem>
+        <ListItem className={classes.refineInput}>
+          <CheckboxesGroup type="tipShape"/>
+        </ListItem>
       </List>
       </Collapse>
     </React.Fragment>

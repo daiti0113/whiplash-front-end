@@ -63,12 +63,14 @@ export default function ItemList() {
     const checkedManufacturerList = Object.entries(conditions.manufacturer).map(choice => choice[1].checked ? choice[1].display : false).filter(choice => choice);
     const checkedMaterialList = Object.entries(conditions.material).map(choice => choice[1].checked ? choice[1].display : false).filter(choice => choice);
     const checkedTipMaterialList = Object.entries(conditions.tipMaterial).map(choice => choice[1].checked ? choice[1].display : false).filter(choice => choice);
+    const checkedTipShapeList = Object.entries(conditions.tipShape).map(choice => choice[1].checked ? choice[1].display : false).filter(choice => choice);
 
     const result = items.filter((item) => {
       // APIの返却値(item.***)はキャメルケースであることに注意。
       if (checkedManufacturerList.length && checkedManufacturerList.indexOf(item.manufacturer) === -1) return false;
       if (checkedMaterialList.length && checkedMaterialList.indexOf(item.material) === -1) return false;
       if (checkedTipMaterialList.length && checkedTipMaterialList.indexOf(item.tip_material) === -1) return false;
+      if (checkedTipShapeList.length && checkedTipShapeList.indexOf(item.tip_shape) === -1) return false;
       if (item.price < conditions.price[0] || item.price > conditions.price[1]) return false;
       if (item.length < conditions.length[0] || item.length > conditions.length[1]) return false;
       if (item.thickness < conditions.thickness[0] || item.thickness > conditions.thickness[1]) return false;

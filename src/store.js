@@ -11,7 +11,7 @@ const initialState = {
         vicFirth: {display: 'Vic Firth', checked: false},
       },
       length: [300, 400],
-      thickness: [7, 15],
+      thickness: [7, 20],
       weight: [0, 500],
       material: {
         hickory: {display: 'Hickory', checked: false},
@@ -26,7 +26,15 @@ const initialState = {
         nylon: {display: 'Nylon', checked: false},
         specialty: {display: 'Specialty', checked: false},
       },
-      tipShape: [],
+      tipShape: {
+        barrel: {display: 'Barrel', checked: false},
+        arrow: {display: 'Arrow', checked: false},
+        tearDrop: {display: 'Tear Drop', checked: false},
+        oval: {display: 'Oval', checked: false},
+        round: {display: 'Round', checked: false},
+        acorn: {display: 'Acorn', checked: false},
+        other: {display: 'Other', checked: false}        
+      },
       taper: [],
     },
     searchMenuOpen: false,
