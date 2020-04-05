@@ -21,7 +21,11 @@ const initialState = {
         composite: {display: 'Composite', checked: false},
         persimmon: {display: 'Persimmon', checked: false},
       },
-      tipMaterial: [],
+      tipMaterial: {
+        wood: {display: 'Wood', checked: false},
+        nylon: {display: 'Nylon', checked: false},
+        specialty: {display: 'Specialty', checked: false},
+      },
       tipShape: [],
       taper: [],
     },
