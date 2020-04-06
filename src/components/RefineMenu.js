@@ -2,15 +2,12 @@ import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 import Typography from '@material-ui/core/Typography';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
-import RangeSlider from './RangeSlider';
-import CheckboxesGroup from './CheckBoxesGroup';
+import RefineItem from './RefineItem';
 
 const useStyles = makeStyles({
   title: {
@@ -21,19 +18,7 @@ const useStyles = makeStyles({
     alignItems: "center",
     
   },
-  refineRabel: {
-    paddingTop: 0,
-    paddingBottom: 0,
-  },
-  refineInput: {
-    paddingTop: 0,
-    paddingBottom: 0,
-  },
-  icon: {
-    minWidth: 32,
-  }
 });
-
 
 export default function RefineMenu() {
   const classes = useStyles();
@@ -44,107 +29,27 @@ export default function RefineMenu() {
   };
 
   return (
-    <React. Fragment>
+    <React.Fragment>
       <ListItem button key="title-refine" onClick={handleRefineNestOpen}>
         <Typography variant="h6" className={classes.title}>
-            絞り込み
-            {refineNestOpen ? <ExpandLess fontSize="large"/> : <ExpandMore fontSize="large"/>}
+          絞り込み
+          {refineNestOpen ? <ExpandLess fontSize="large" /> : <ExpandMore fontSize="large" />}
         </Typography>
       </ListItem>
 
       <Collapse in={refineNestOpen} timeout="auto" unmountOnExit>
-      <List component="div" disablePadding>
-        <ListItem className={classes.refineRabel}>
-          <ListItemIcon className={classes.icon}>
-            <LocalAtmIcon />
-          </ListItemIcon>
-          <ListItemText primary="価格" />
-        </ListItem>
-        <ListItem className={classes.refineInput}>
-          <RangeSlider type="price"/>
-        </ListItem>
-        <ListItem className={classes.refineRabel}>
-          <ListItemIcon className={classes.icon}>
-            <LocalAtmIcon />
-          </ListItemIcon>
-          <ListItemText primary="メーカー" />
-        </ListItem>
-        <ListItem className={classes.refineInput}>
-          <CheckboxesGroup type="manufacturer"/>
-        </ListItem>
-        <ListItem className={classes.refineRabel}>
-          <ListItemIcon className={classes.icon}>
-            <LocalAtmIcon />
-          </ListItemIcon>
-          <ListItemText primary="長さ" />
-        </ListItem>
-        <ListItem className={classes.refineInput}>
-          <RangeSlider type="length"/>
-        </ListItem>
-        <ListItem className={classes.refineRabel}>
-          <ListItemIcon className={classes.icon}>
-            <LocalAtmIcon />
-          </ListItemIcon>
-          <ListItemText primary="太さ" />
-        </ListItem>
-        <ListItem className={classes.refineInput}>
-          <RangeSlider type="thickness"/>
-        </ListItem>
-        <ListItem className={classes.refineRabel}>
-          <ListItemIcon className={classes.icon}>
-            <LocalAtmIcon />
-          </ListItemIcon>
-          <ListItemText primary="本体材質" />
-        </ListItem>
-        <ListItem className={classes.refineInput}>
-          <CheckboxesGroup type="material"/>
-        </ListItem>
-        <ListItem className={classes.refineRabel}>
-          <ListItemIcon className={classes.icon}>
-            <LocalAtmIcon />
-          </ListItemIcon>
-          <ListItemText primary="チップ材質" />
-        </ListItem>
-        <ListItem className={classes.refineInput}>
-          <CheckboxesGroup type="tipMaterial"/>
-        </ListItem>
-        <ListItem className={classes.refineRabel}>
-          <ListItemIcon className={classes.icon}>
-            <LocalAtmIcon />
-          </ListItemIcon>
-          <ListItemText primary="チップ形状" />
-        </ListItem>
-        <ListItem className={classes.refineInput}>
-          <CheckboxesGroup type="tipShape"/>
-        </ListItem>
-        <ListItem className={classes.refineRabel}>
-          <ListItemIcon className={classes.icon}>
-            <LocalAtmIcon />
-          </ListItemIcon>
-          <ListItemText primary="テーパー" />
-        </ListItem>
-        <ListItem className={classes.refineInput}>
-          <CheckboxesGroup type="taper"/>
-        </ListItem>
-        <ListItem className={classes.refineRabel}>
-          <ListItemIcon className={classes.icon}>
-            <LocalAtmIcon />
-          </ListItemIcon>
-          <ListItemText primary="評価" />
-        </ListItem>
-        <ListItem className={classes.refineInput}>
-          <RangeSlider type="evaluation"/>
-        </ListItem>
-        <ListItem className={classes.refineRabel}>
-          <ListItemIcon className={classes.icon}>
-            <LocalAtmIcon />
-          </ListItemIcon>
-          <ListItemText primary="評価件数" />
-        </ListItem>
-        <ListItem className={classes.refineInput}>
-          <RangeSlider type="evaluationCount"/>
-        </ListItem>
-      </List>
+        <List component="div" disablePadding>
+          <RefineItem input="slider" title="価格" type="price" icon={<LocalAtmIcon />} />
+          <RefineItem input="checkbox" title="メーカー" type="manufacturer" icon={<LocalAtmIcon />} />
+          <RefineItem input="slider" title="長さ" type="length" icon={<LocalAtmIcon />} />
+          <RefineItem input="slider" title="太さ" type="thickness" icon={<LocalAtmIcon />} />
+          <RefineItem input="checkbox" title="本体材質" type="material" icon={<LocalAtmIcon />} />
+          <RefineItem input="checkbox" title="チップ材質" type="tipMaterial" icon={<LocalAtmIcon />} />
+          <RefineItem input="checkbox" title="チップ形状" type="tipShape" icon={<LocalAtmIcon />} />
+          <RefineItem input="checkbox" title="テーパー" type="taper" icon={<LocalAtmIcon />} />
+          <RefineItem input="slider" title="評価" type="evaluation" icon={<LocalAtmIcon />} />
+          <RefineItem input="slider" title="評価件数" type="evaluationCount" icon={<LocalAtmIcon />} />
+        </List>
       </Collapse>
     </React.Fragment>
   )
