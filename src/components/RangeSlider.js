@@ -71,6 +71,27 @@ const config = {
     "data-pos": "back",
     "data-label": "~",
   },
+  evaluationCount: {
+    step: 5,
+    min: 0,
+    max: 100,
+    marks: [
+      {
+        value: 0,
+        label: '0',
+      },
+      {
+        value: 50,
+        label: '50',
+      },
+      {
+        value: 100,
+        label: '100',
+      },
+    ],
+    "data-pos": "back",
+    "data-label": "~",
+  },
 }
 
 const valueText = (config) => (value) => config["data-pos"] === "front" ? `${config["data-label"]}${value}` : `${value}${config["data-label"]}`;

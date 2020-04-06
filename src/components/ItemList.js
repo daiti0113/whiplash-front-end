@@ -77,6 +77,7 @@ export default function ItemList() {
       if (item.length < conditions.length[0] || item.length > conditions.length[1]) return false;
       if (item.thickness < conditions.thickness[0] || item.thickness > conditions.thickness[1]) return false;
       if (item.evaluation < conditions.evaluation) return false;
+      if (item.evaluation_count < conditions.evaluationCount) return false;
       for (let key in item) {
         if (!conditions.keywords || String(item[key]).indexOf(conditions.keywords) !== -1) return true;
       }
@@ -102,7 +103,7 @@ export default function ItemList() {
               size="small"
             />
             <span>{item.evaluation}</span>
-            <span className={classes.evaluationCount}>{item.evaluationCount}reviews</span>
+            <span className={classes.evaluation_count}>{item.evaluation_count}reviews</span>
           </li>
           <li key={`price-${item.id}`}>&yen;{item.price}~</li>
         </ul>

@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from 'react';
+import React, {createContext, useReducer} from 'react';
 
 const initialState = {
     conditions: {
@@ -41,6 +41,7 @@ const initialState = {
         l: {display: 'L', checked: false},
       },
       evaluation: 1,
+      evaluationCount: 0,
     },
     searchMenuOpen: false,
  };
