@@ -40,7 +40,7 @@ export default function ItemList() {
   const [items, setItems] = useState([]);
   const [foundItems, setFoundItems] = useState([]);
   const {state} = useContext(store);
-  const conditions = state.conditions;
+  const {conditions, order} = state;
 
   useEffect(() => {
     const fetchData = async() => {
@@ -58,6 +58,10 @@ export default function ItemList() {
       setFoundItems(searchItems());
     }
   }, [conditions]);
+
+  useEffect(() => {
+      setFoundItems(sortItems(order));
+  }, [order]);
 
   const searchItems = () => {
     const checkedManufacturerChoices = Object.entries(conditions.manufacturer).map(choice => choice[1].checked ? choice[1].display : false).filter(choice => choice);
@@ -82,9 +86,19 @@ export default function ItemList() {
         if (!conditions.keywords || String(item[key]).indexOf(conditions.keywords) !== -1) return true;
       }
     });
-
     return result;
-  }
+  };
+
+  const sortItems = (order) => {
+    const compareFunc = {
+      "EVALUATION_DESC": (a, b) => a.evaluation < b.evaluation ? 1 : -1,
+      "PRICE_ASC": (a, b) => a.price > b.price ? 1 : -1,
+      "PRICE_DESC": (a, b) => a.price < b.price ? 1 : -1,
+      "EVALUATION_COUNT_DESC": (a, b) => a.evaluation_count < b.evaluation_count ? 1 : -1,
+
+    };
+    return Object.assign([], foundItems).sort(compareFunc[order]);
+  };
 
   const listItems = useMemo(() => foundItems.map(item =>
     <React.Fragment key={item.id}>

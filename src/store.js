@@ -43,6 +43,7 @@ const initialState = {
       evaluation: 1,
       evaluationCount: 0,
     },
+    order: "ID_ASC",
     searchMenuOpen: false,
  };
 
@@ -59,6 +60,8 @@ const StateProvider = ({ children }) => {
         return { ...state, conditions: action.payload }
       case 'UPDATE_SEARCH_MENU_OPEN':
         return { ...state, searchMenuOpen: action.payload }
+      case 'UPDATE_ORDER':
+        return { ...state, order: action.payload }
       default:
         return { ...state };
     };
