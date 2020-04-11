@@ -42,6 +42,7 @@ export default function SearchInput() {
   const classes = useStyles();
 
   function setKeywords(e) {
+    e.preventDefault();
     dispatch({ type: "UPDATE_CONDITIONS", payload: {...state.conditions, keywords: inputRef.current.children[0].value}});
   };
 
@@ -50,7 +51,7 @@ export default function SearchInput() {
   }
 // TODO: onSubmitも追加して
   return (
-      <Paper component="form" className={classes.root}>
+      <Paper component="form" className={classes.root} onSubmit={setKeywords}>
       <InputBase
           className={classes.input}
           placeholder="キーワードで検索"

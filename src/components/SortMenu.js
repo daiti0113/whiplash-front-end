@@ -37,6 +37,7 @@ export default function SortMenu() {
     dispatch({type: "UPDATE_ORDER", payload: order});
   };
 
+  // TODO: selectedのstateを持たせてデザインを変える。
   return (
     <React.Fragment>
       <ListItem button onClick={handleOpen}>
