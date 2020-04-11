@@ -41,15 +41,15 @@ export default function SearchInput() {
   const inputRef = useRef();
   const classes = useStyles();
 
-  function setKeywords(e) {
-    e.preventDefault();
+  const setKeywords = (event) => {
+    event.preventDefault();
     dispatch({ type: "UPDATE_CONDITIONS", payload: {...state.conditions, keywords: inputRef.current.children[0].value}});
   };
 
-  function handleClick() {
+  const handleClick = () => {
     dispatch({ type: "UPDATE_SEARCH_MENU_OPEN", payload: true });
   }
-// TODO: onSubmitも追加して
+
   return (
       <Paper component="form" className={classes.root} onSubmit={setKeywords}>
       <InputBase

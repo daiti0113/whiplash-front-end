@@ -24,7 +24,7 @@ export default function SerchMenu() {
   const classes = useStyles();
 
 
-  function handleSearchMenuOpen() {
+  const handleSearchMenuOpen = () => {
     dispatch({ type: "UPDATE_SEARCH_MENU_OPEN", payload: false });
   }
 

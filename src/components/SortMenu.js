@@ -29,7 +29,7 @@ export default function SortMenu() {
   const [open, setOpen] = useState(true);
   const {dispatch} = useContext(store);
 
-  function handleOpen() {
+  const handleOpen = () => {
     setOpen(!open);
   };
 
