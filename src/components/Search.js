@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ItemList from './ItemList';
+import SearchMenu from './SearchMenu';
+import SearchInput from './SearchInput';
+
+
 
 export default function Search() {
     return (
-        <h1>検索画面です。</h1>
+      <React.Fragment>
+        <SearchInput/>
+        <SearchMenu/>
+        <ItemList/>
+      </React.Fragment>
     )
 };

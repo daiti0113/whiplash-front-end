@@ -6,14 +6,25 @@ import '@babel/polyfill';
 import { BrowserRouter } from 'react-router-dom';
 import Header from './src/components/Header';
 import Routes from './src/routes'
+import { StateProvider } from './src/store';
+import whyDidYouRender from "@welldone-software/why-did-you-render";
+
+if (process.env.NODE_ENV === 'dev') {
+  whyDidYouRender(React, {
+    trackAllPureComponents: true,
+  });
+  console.log("whyDidYouRender: true")
+}
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes />
-      {/* <Footer /> */}
-    </BrowserRouter>
+    <StateProvider>
+      <BrowserRouter>
+        <Header />
+        <Routes />
+        {/* <Footer /> */}
+      </BrowserRouter>
+    </StateProvider>
   );
 }
 
