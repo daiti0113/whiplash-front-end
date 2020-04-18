@@ -8,11 +8,12 @@ import Avatar from '@material-ui/core/Avatar';
 import requestAPI from '../api';
 import images from '../../assets/images/Pearl/*.jpg'
 import Rating from '@material-ui/lab/Rating';
+import Pagination from '@material-ui/lab/Pagination';
 import {store} from '../store';
 
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  list: {
     width: '100%',
     backgroundColor: theme.palette.background.paper,
   },
@@ -31,16 +32,29 @@ const useStyles = makeStyles(theme => ({
   },
   itemImage: {
     width: theme.spacing(9),
-    height: theme.spacing(9)
+    height: theme.spacing(9),
+  },
+  pagination: {
+    '& > ul': {
+      display: "block",
+      textAlign: "center",
+      '& > li': {
+        'display': "inline-block",
+      }
+    },
   }
 }));
+
+const calcLastPage = (itemCount, perPage) => itemCount%perPage !== 0 ? Math.floor(itemCount/perPage)+1 : Math.floor(itemCount/perPage);
 
 export default function ItemList() {
   const classes = useStyles();
   const [items, setItems] = useState([]);
   const [foundItems, setFoundItems] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const {state} = useContext(store);
   const {conditions, order} = state;
+  const perPage = 10;
 
   useEffect(() => {
     const fetchData = async() => {
@@ -100,7 +114,12 @@ export default function ItemList() {
     return Object.assign([], foundItems).sort(compareFunc[order]);
   };
 
-  const listItems = useMemo(() => foundItems.map(item =>
+  const handlePagination = (e, page) => {
+    setCurrentPage(page-1);
+    scrollTo(0, 0);
+  }
+
+  const listItems = useMemo(() => foundItems.slice(currentPage*perPage, currentPage*perPage+perPage).map(item =>
     <React.Fragment key={item.id}>
       <ListItem className={classes.listItem} alignItems="flex-start">
         <ListItemAvatar>
@@ -124,11 +143,14 @@ export default function ItemList() {
       </ListItem>
       <Divider variant="inset" component="li" />
     </React.Fragment>
-  ), [foundItems]);
+  ), [foundItems, currentPage]);
 
   return (
-    <List className={classes.root}>
-      {listItems}
-    </List>
+    <div>
+      <List className={classes.list}>
+        {listItems}
+      </List>
+      <Pagination onChange={handlePagination} page={currentPage+1} count={calcLastPage(foundItems.length, perPage)} shape="rounded" className={classes.pagination} />
+    </div>
   );
 }
