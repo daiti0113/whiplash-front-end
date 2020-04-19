@@ -6,7 +6,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import requestAPI from '../api';
-import images from '../../assets/images/Pearl/*.jpg'
+import {images} from '../../assets/images/index';
 import Rating from '@material-ui/lab/Rating';
 import Pagination from '@material-ui/lab/Pagination';
 import {store} from '../store';
@@ -51,7 +51,7 @@ export default function ItemList() {
   const classes = useStyles();
   const [items, setItems] = useState([]);
   const [foundItems, setFoundItems] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const {state} = useContext(store);
   const {conditions, order} = state;
   const perPage = 10;
@@ -123,7 +123,7 @@ export default function ItemList() {
     <React.Fragment key={item.id}>
       <ListItem className={classes.listItem} alignItems="flex-start">
         <ListItemAvatar>
-          <Avatar className={classes.itemImage} src={images['121HC']}>{item.name}</Avatar>
+          <Avatar className={classes.itemImage} src={images[item.name]} variant="rounded">{item.name}</Avatar>
         </ListItemAvatar>
         <ul className={classes.itemDetail}>
           <li key={`name-${item.id}`}>{item.name}</li>
