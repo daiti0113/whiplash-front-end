@@ -11,7 +11,7 @@ export default function Routes() {
         <Route path="/" exact children={<Home />} />
         <Route path="/ranking" children={<Ranking />} />
         <Route path="/search" children={<Search />} />
-        <Route path="/item_detail/:itemName" children={<ItemDetail />} />
+        <Route path="/item_detail/:id" children={<ItemDetail />} />
       </Switch>
     );
   }

@@ -8,6 +8,7 @@ import Header from './src/components/Header';
 import Routes from './src/routes'
 import { StateProvider } from './src/store';
 import whyDidYouRender from "@welldone-software/why-did-you-render";
+import {makeStyles} from '@material-ui/core/styles';
 
 if (process.env.NODE_ENV === 'dev') {
   whyDidYouRender(React, {
@@ -16,12 +17,22 @@ if (process.env.NODE_ENV === 'dev') {
   console.log("whyDidYouRender: true")
 }
 
+const useStyles = makeStyles(theme => ({
+  content: {
+    marginTop: '10',
+  },
+}));
+
 function App() {
+  const classes = useStyles();
+
   return (
     <StateProvider>
       <BrowserRouter>
         <Header />
-        <Routes />
+        <div className={classes.content}>
+          <Routes />
+        </div>
         {/* <Footer /> */}
       </BrowserRouter>
     </StateProvider>
