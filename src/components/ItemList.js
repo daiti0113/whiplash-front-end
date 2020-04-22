@@ -10,6 +10,7 @@ import {images} from '../../assets/images/index';
 import Rating from '@material-ui/lab/Rating';
 import Pagination from '@material-ui/lab/Pagination';
 import {store} from '../store';
+import {Link} from 'react-router-dom';
 
 
 const useStyles = makeStyles(theme => ({
@@ -33,6 +34,12 @@ const useStyles = makeStyles(theme => ({
   itemImage: {
     width: theme.spacing(9),
     height: theme.spacing(9),
+  },
+  link: {
+    width: "100%",
+    height: "100%",
+    textDecoration: "none",
+    color: "black"
   },
   pagination: {
     '& > ul': {
@@ -122,24 +129,26 @@ export default function ItemList() {
   const listItems = useMemo(() => foundItems.slice(currentPage*perPage, currentPage*perPage+perPage).map(item =>
     <React.Fragment key={item.id}>
       <ListItem className={classes.listItem} alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar className={classes.itemImage} src={images[item.name]} variant="rounded">{item.name}</Avatar>
-        </ListItemAvatar>
-        <ul className={classes.itemDetail}>
-          <li key={`name-${item.id}`}>{item.name}</li>
-          <li key={`manufacturer-${item.id}`}>{item.manufacturer}</li>
-          <li key={`evaluation-${item.id}`}>
-            <Rating
-              name="simple-controlled"
-              value={item.evaluation}
-              precision={0.1}
-              size="small"
-            />
-            <span>{item.evaluation}</span>
-            <span className={classes.evaluation_count}>{item.evaluation_count}reviews</span>
-          </li>
-          <li key={`price-${item.id}`}>&yen;{item.price}~</li>
-        </ul>
+        <Link to={`/item/${item.id}`} className={classes.link}>
+          <ListItemAvatar>
+            <Avatar className={classes.itemImage} src={images[item.name]} variant="rounded">{item.name}</Avatar>
+          </ListItemAvatar>
+          <ul className={classes.itemDetail}>
+            <li key={`name-${item.id}`}>{item.name}</li>
+            <li key={`manufacturer-${item.id}`}>{item.manufacturer}</li>
+            <li key={`evaluation-${item.id}`}>
+              <Rating
+                name="simple-controlled"
+                value={item.evaluation}
+                precision={0.1}
+                size="small"
+              />
+              <span>{item.evaluation}</span>
+              <span className={classes.evaluation_count}>{item.evaluation_count}reviews</span>
+            </li>
+            <li key={`price-${item.id}`}>&yen;{item.price}~</li>
+          </ul>
+        </Link>
       </ListItem>
       <Divider variant="inset" component="li" />
     </React.Fragment>
