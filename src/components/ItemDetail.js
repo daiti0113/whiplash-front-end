@@ -10,11 +10,17 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
     image: {
-      width: '100%',
+        width: '100%',
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        margin: 'auto',
     },
     imageHolder: {
-        marginTop: '20',
         height: '200',
+        position: 'relative',
     },
     button: {
         textTransform: "none",
@@ -38,14 +44,13 @@ export function ItemDetail() {
 
     return (
         <div>
-            {console.log(item.evaluation)}
-            {item.manufacturer && <h2>{item.manufacturer}</h2>}
-            {item.name && <h3>{item.name}</h3>}
+            {item.manufacturer && <h3>{item.manufacturer}</h3>}
+            {item.name && <h2>{item.name}</h2>}
             <div className={classes.imageHolder}>
                 {item.name && <Avatar className={classes.image} src={images[item.name]} variant="rounded">{item.name}</Avatar>}
             </div>
             {item.evaluation && <Rating name="simple-controlled" value={item.evaluation} precision={0.1} size="small" />}
-            {item.price && <p>&yen;{item.price}</p>}
+            {item.price && <p>&yen;{item.price}~</p>}
             <Button variant="contained" color="primary" className={classes.button}>Amazonで購入する</Button>
             <div>
                 <h3>商品説明</h3>
