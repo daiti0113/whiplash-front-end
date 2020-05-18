@@ -1,39 +1,39 @@
-import React, {useState, useEffect} from 'react';
-import SpeedDialTooltip from "./SpeedDial";
-import Avatar from '@material-ui/core/Avatar';
-import {useParams} from "react-router-dom";
-import {images} from '../../assets/images/index';
-import {makeStyles} from '@material-ui/core/styles';
-import requestAPI from '../api';
-import Rating from '@material-ui/lab/Rating';
-import Button from '@material-ui/core/Button';
+import React, {useState, useEffect} from "react"
+import SpeedDialTooltip from "./SpeedDial"
+import Avatar from "@material-ui/core/Avatar"
+import {useParams} from "react-router-dom"
+import {images} from "../../assets/images/index"
+import {makeStyles} from "@material-ui/core/styles"
+import requestAPI from "../api"
+import Rating from "@material-ui/lab/Rating"
+import Button from "@material-ui/core/Button"
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
     image: {
-        width: '100%',
-        position: 'absolute',
+        width: "100%",
+        position: "absolute",
         top: 0,
         right: 0,
         bottom: 0,
         left: 0,
-        margin: 'auto',
+        margin: "auto"
     },
     imageHolder: {
-        height: '200',
-        position: 'relative',
+        height: "200",
+        position: "relative"
     },
     button: {
         textTransform: "none",
         width: "100%"
-    },
-}));
+    }
+}))
 
 export function ItemDetail() {
-    const {id}  = useParams();
+    const { id } = useParams();
     const classes = useStyles();
     const [item, setItem] = useState({});
 
-    const fetchData = async() => {
+    const fetchData = async () => {
         const response = await requestAPI('GET', `/item/${id}`);
         setItem(response.data);
     };

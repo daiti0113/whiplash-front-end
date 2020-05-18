@@ -1,50 +1,38 @@
+// eslint-disable-next-line no-undef
 module.exports = {
     extends: ["eslint:recommended", "standard-react"],
-    plugins: ['import', 'react'],
+    plugins: ["import", "react"],
     rules: {
-        'linebreak-style': 'off',
-        'no-unused-vars': 2,
-        'react/jsx-uses-vars': 2,
+        "linebreak-style": "off",
+        "no-unused-vars": 2,
+        "react/jsx-uses-vars": 2,
         "react/jsx-indent": ["error", 4],
         "react/jsx-indent-props": ["error", 4],
         "react/prop-types": [0],
         "jsx-quotes": ["warn", "prefer-double"],
-        'comma-dangle': 0,
-        'indent': ["error", 4],
+        "indent": ["error", 4],
         "quotes": ["warn","double"],
         "max-lines-per-function": ["error", 20],
         "max-statements": ["error", 15],
         "max-depth": ["error", 2],
         "complexity": ["error", 5],
         "no-delete-var": "error",
-        "fp/no-arguments": "error",
-        "fp/no-class": "error",
-        "fp/no-delete": "error",
-        "fp/no-events": "error",
-        "fp/no-get-set": "error",
-        "fp/no-let": "error",
-        "fp/no-loops": "error",
-        "fp/no-mutating-assign": "error",
-        "fp/no-mutating-methods": "error",
-        "fp/no-mutation": "error",
-        "fp/no-nil": "error",
-        "fp/no-proxy": "error",
-        "fp/no-rest-parameters": "error",
-        "fp/no-this": "error",
-        "fp/no-throw": "error",
-        "fp/no-valueof-field": "error",
-        "no-var": "error"
+        "no-var": "error",
+        "block-spacing": ["error", "never"],
+        "object-curly-spacing": ["error", "never"],
+        "semi": ["error", "never"],
+        "comma-dangle": ["error", "never"]
     },
-    parser: 'babel-eslint',
+    parser: "babel-eslint",
     parserOptions: {
         allowImportExportEverywhere: true,
         ecmaFeatures: {
-            jsx: true,
-        },
+            jsx: true
+        }
     },
     env: {
         es2017: true,
-        browser: true,
-    },
-};
+        browser: true
+    }
+}
 
