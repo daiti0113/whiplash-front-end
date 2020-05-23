@@ -3,7 +3,7 @@ import axios from "axios"
 // eslint-disable-next-line no-undef
 const base_url = process.env.API_ROOT
 
-export default function requestAPI(method, endpoint) {
+export const requestAPI = (method, endpoint) => {
     let res = {}
     switch(method) {
     case "GET":

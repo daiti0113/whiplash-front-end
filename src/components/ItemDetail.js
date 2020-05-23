@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from "react"
-import SpeedDialTooltip from "./SpeedDial"
+import {SpeedDialTooltip} from "./SpeedDial"
 import Avatar from "@material-ui/core/Avatar"
 import {useParams} from "react-router-dom"
 import {images} from "../../assets/images/index"
 import {makeStyles} from "@material-ui/core/styles"
-import requestAPI from "../api"
 import Rating from "@material-ui/lab/Rating"
 import Button from "@material-ui/core/Button"
+import {fetchData} from "../helper"
 
 const useStyles = makeStyles(() => ({
     image: {
@@ -28,22 +28,12 @@ const useStyles = makeStyles(() => ({
     }
 }))
 
-export function ItemDetail() {
-    const { id } = useParams();
-    const classes = useStyles();
-    const [item, setItem] = useState({});
-
-    const fetchData = async () => {
-        const response = await requestAPI('GET', `/item/${id}`);
-        setItem(response.data);
-    };
-
-    useEffect(() => {
-        fetchData();
-    }, []);
+// eslint-disable-next-line complexity
+const ItemInfo = ({item}) => {
+    const classes = useStyles()
 
     return (
-        <div>
+        <>
             {item.manufacturer && <h3>{item.manufacturer}</h3>}
             {item.name && <h2>{item.name}</h2>}
             <div className={classes.imageHolder}>
@@ -51,11 +41,29 @@ export function ItemDetail() {
             </div>
             {item.evaluation && <Rating name="simple-controlled" value={item.evaluation} precision={0.1} size="small" />}
             {item.price && <p>&yen;{item.price}~</p>}
+        </>
+    )
+}
+
+const ItemDescription = ({item}) => (
+    <>
+        <h3>商品説明</h3>
+        <p>{item.description ? item.description : ""}</p>
+    </>
+)
+
+export const ItemDetail = () => {
+    const {id} = useParams()
+    const classes = useStyles()
+    const [item, setItem] = useState({})
+
+    fetchData(`/item/${id}`, useEffect, [setItem])
+
+    return (
+        <div>
+            <ItemInfo item={item} />
             <Button variant="contained" color="primary" className={classes.button}>Amazonで購入する</Button>
-            <div>
-                <h3>商品説明</h3>
-                <p>{item.description ? item.description : ""}</p>
-            </div>
+            <ItemDescription item={item} />
             <SpeedDialTooltip />
         </div>
     )

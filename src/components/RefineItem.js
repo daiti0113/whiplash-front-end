@@ -5,8 +5,8 @@ import ListItemText from "@material-ui/core/ListItemText"
 import ExpandLess from "@material-ui/icons/ExpandLess"
 import ExpandMore from "@material-ui/icons/ExpandMore"
 import Collapse from "@material-ui/core/Collapse"
-import RangeSlider from "./RangeSlider"
-import CheckboxesGroup from "./CheckBoxesGroup"
+import {RangeSlider} from "./RangeSlider"
+import {CheckboxesGroup} from "./CheckBoxesGroup"
 
 const useStyles = makeStyles({
     refineRabel: {
@@ -19,16 +19,9 @@ const useStyles = makeStyles({
     }
 })
 
-export default function RefineItem(props) {
+const InputItem = ({input, type}) => {
     const classes = useStyles()
-    const {input, title, type} = props
-    const [nestOpen, setNestOpen] = useState(false)
-  
-    const handleNestOpen = () => {
-        setNestOpen(!nestOpen)
-    }
-
-    const inputItem = {
+    const InputItems = {
         slider: (
             <ListItem className={classes.refineInput}>
                 <RangeSlider type={type} />
@@ -41,14 +34,26 @@ export default function RefineItem(props) {
         )
     }
 
+    return InputItems[input]
+}
+
+const handleNestOpen = (nestOpen, setNestOpen) => () => {
+    setNestOpen(!nestOpen)
+}
+
+export const RefineItem = (props) => {
+    const classes = useStyles()
+    const {input, title, type} = props
+    const [nestOpen, setNestOpen] = useState(false)
+
     return (
         <>
-            <ListItem className={classes.refineRabel} onClick={handleNestOpen}>
+            <ListItem className={classes.refineRabel} onClick={handleNestOpen(nestOpen, setNestOpen)}>
                 <ListItemText primary={title} />
                 {nestOpen ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
             <Collapse in={nestOpen} timeout="auto" unmountOnExit>
-                {inputItem[input]}
+                <InputItem input={input} type={type} />
             </Collapse>
         </>
     )

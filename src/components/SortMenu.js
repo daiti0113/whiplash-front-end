@@ -23,43 +23,50 @@ const useStyles = makeStyles(() => ({
     }
 }))
 
+const handleOpen = (open, setOpen) => () => {
+    setOpen(!open)
+}
 
-export default function SortMenu() {
+const handleOrder = (dispatch, order) => () => {
+    dispatch({type: "UPDATE_ORDER", payload: order})
+}
+
+const SortItem = ({dispatch, type, title}) => {
+    return (
+        <ListItem button onClick={handleOrder(dispatch, type)}>
+            <ListItemText primary={title} />
+        </ListItem>
+    )
+}
+
+// TODO: RefineMenuにも同じようなものがあるから共通化
+const MenuTitle = ({open, setOpen}) => {
     const classes = useStyles()
+
+    return (
+        <ListItem button onClick={handleOpen(open, setOpen)}>
+            <Typography variant="h6" className={classes.title}>
+                並び替え
+                {open ? <ExpandLess fontSize="large" /> : <ExpandMore fontSize="large" />}
+            </Typography>
+        </ListItem>
+    )
+}
+
+export const SortMenu = () => {
     const [open, setOpen] = useState(true)
     const {dispatch} = useContext(store)
-
-    const handleOpen = () => {
-        setOpen(!open)
-    }
-
-    const handleOrder = (order) => () => {
-        dispatch({type: "UPDATE_ORDER", payload: order})
-    }
 
     // TODO: selectedのstateを持たせてデザインを変える。
     return (
         <>
-            <ListItem button onClick={handleOpen}>
-                <Typography variant="h6" className={classes.title}>
-                    並び替え
-                    {open ? <ExpandLess fontSize="large" /> : <ExpandMore fontSize="large" />}
-                </Typography>
-            </ListItem>
+            <MenuTitle open={open} setOpen={setOpen} />
             <Collapse in={open} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                    <ListItem button onClick={handleOrder("EVALUATION_DESC")}>
-                        <ListItemText primary="レビューの評価順" />
-                    </ListItem>
-                    <ListItem button onClick={handleOrder("PRICE_ASC")}>
-                        <ListItemText primary="価格の安い順" />
-                    </ListItem>
-                    <ListItem button onClick={handleOrder("PRICE_DESC")}>
-                        <ListItemText primary="価格の高い順" />
-                    </ListItem>
-                    <ListItem button onClick={handleOrder("EVALUATION_COUNT_DESC")}>
-                        <ListItemText primary="クチコミ件数の多い順" />
-                    </ListItem>
+                    <SortItem dispatch={dispatch} type="EVALUATION_DESC" title="レビューの評価順" />
+                    <SortItem dispatch={dispatch} type="PRICE_ASC" title="価格の安い順" />
+                    <SortItem dispatch={dispatch} type="PRICE_DESC" title="価格の高い順" />
+                    <SortItem dispatch={dispatch} type="EVALUATION_COUNT_DESC" title="クチコミ件数の多い順" />
                 </List>
             </Collapse>
         </>

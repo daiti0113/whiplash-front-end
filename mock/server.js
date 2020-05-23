@@ -1,8 +1,9 @@
-import {create, router as _router, defaults, rewriter} from "json-server"
-const server = create()
 // eslint-disable-next-line no-undef
-const router = _router(__dirname + "/db.json")
-const middlewares = defaults()
+const jsonServer = require("json-server")
+const server = jsonServer.create()
+// eslint-disable-next-line no-undef
+const router = jsonServer.router(__dirname + "/db.json")
+const middlewares = jsonServer.defaults()
 
 // Middleware(前処理)
 server.use(middlewares)
@@ -24,9 +25,9 @@ server.use((req, res, next) => {
 })
 
 // Routes
-server.use(rewriter({
+server.use(jsonServer.rewriter({
     "/api/*": "/$1",
-    "/posts\\?id=:id": "/posts/:id",
+    "/posts\\?id=:id": "/posts/:id"
 }))
 server.use(router)
 

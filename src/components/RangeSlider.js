@@ -96,7 +96,7 @@ const config = {
 
 const valueText = (config) => (value) => config["data-pos"] === "front" ? `${config["data-label"]}${value}` : `${value}${config["data-label"]}`
 
-export default function RangeSlider(props) {
+export const RangeSlider = (props) => {
     const {type} = props
     const {state, dispatch} = useContext(store)
 

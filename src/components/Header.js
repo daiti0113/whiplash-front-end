@@ -5,7 +5,7 @@ import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
 import Button from "@material-ui/core/Button"
 import IconButton from "@material-ui/core/IconButton"
-import Menu from "./Menu"
+import {CustomizedMenus} from "./Menu"
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export default function Header() {
+export const Header = () => {
     const classes = useStyles()
 
     return (
@@ -27,7 +27,7 @@ export default function Header() {
             <AppBar position="static">
                 <Toolbar>
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <Menu />
+                        <CustomizedMenus />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
                         Wiplash

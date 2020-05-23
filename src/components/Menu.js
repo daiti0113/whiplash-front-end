@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import {withStyles} from "@material-ui/core/styles"
 import Menu from "@material-ui/core/Menu"
 import MenuItem from "@material-ui/core/MenuItem"
@@ -46,51 +46,41 @@ const LinkStyle = {
     color: "#707070"
 }
 
-export default function CustomizedMenus() {
-    const [anchorEl, setAnchorEl] = React.useState(null)
+const handleClick = (setAnchorEl) => event => {
+    setAnchorEl(event.currentTarget)
+}
 
-    const handleClick = event => {
-        setAnchorEl(event.currentTarget)
-    }
+const handleClose = (setAnchorEl) => () => {
+    setAnchorEl(null)
+}
 
-    const handleClose = () => {
-        setAnchorEl(null)
-    }
+const MenuLink = ({to, title, icon}) => (
+    <Link to={to} style={LinkStyle}>
+        <StyledMenuItem>
+            <ListItemIcon>
+                {icon}
+            </ListItemIcon>
+            <ListItemText primary={title} />
+        </StyledMenuItem>
+    </Link>
+)
+
+export const CustomizedMenus = () => {
+    const [anchorEl, setAnchorEl] = useState(null)
 
     return (
         <div>
-            <MenuIcon onClick={handleClick} />
+            <MenuIcon onClick={handleClick(setAnchorEl)} />
             <StyledMenu
                 id="customized-menu"
                 anchorEl={anchorEl}
                 keepMounted
                 open={Boolean(anchorEl)}
-                onClose={handleClose}
+                onClose={handleClose(setAnchorEl)}
             >
-                <Link to="/" style={LinkStyle}>
-                    <StyledMenuItem>
-                        <ListItemIcon>
-                            <HomeIcon fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="ホーム" />
-                    </StyledMenuItem>
-                </Link>
-                <Link to="/ranking" style={LinkStyle}>
-                    <StyledMenuItem>
-                        <ListItemIcon>
-                            <StarIcon fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="ランキング" />
-                    </StyledMenuItem>
-                </Link>
-                <Link to="/Search" style={LinkStyle}>
-                    <StyledMenuItem>
-                        <ListItemIcon>
-                            <CreateIcon fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="クチコミを書く" />
-                    </StyledMenuItem>
-                </Link>
+                <MenuLink to="/" title="ホーム" icon={<HomeIcon fontSize="small" />} />
+                <MenuLink to="/ranking" title="ランキング" icon={<StarIcon fontSize="small" />} />
+                <MenuLink to="/search" title="クチコミを書く" icon={<CreateIcon fontSize="small" />} />
             </StyledMenu>
         </div>
     )

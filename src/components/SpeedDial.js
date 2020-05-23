@@ -1,6 +1,5 @@
 import React from "react"
 import {makeStyles} from "@material-ui/core/styles"
-import Button from "@material-ui/core/Button"
 import SpeedDial from "@material-ui/lab/SpeedDial"
 import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon"
 import SpeedDialAction from "@material-ui/lab/SpeedDialAction"
@@ -34,43 +33,30 @@ const actions = [
     {icon: <FavoriteIcon />, name: "Like"}
 ]
 
-export default function OpenIconSpeedDial() {
+const handleOpen = (setOpen) => () => {
+    setOpen(true)
+}
+
+const handleClose = (setOpen) => () => {
+    setOpen(false)
+}
+
+
+export const OpenIconSpeedDial = () => {
     const classes = useStyles()
     const [open, setOpen] = React.useState(false)
-    const [hidden, setHidden] = React.useState(false)
-
-    const handleVisibility = () => {
-        setHidden((prevHidden) => !prevHidden)
-    }
-
-    const handleOpen = () => {
-        setOpen(true)
-    }
-
-    const handleClose = () => {
-        setOpen(false)
-    }
 
     return (
         <div className={classes.root}>
-            <Button onClick={handleVisibility}>Toggle Speed Dial</Button>
             <SpeedDial
                 ariaLabel="SpeedDial"
                 className={classes.speedDial}
-                hidden={hidden}
                 icon={<SpeedDialIcon icon={<EditIcon />} openIcon={<CloseIcon />} />}
-                onClose={handleClose}
-                onOpen={handleOpen}
+                onClose={handleClose(setOpen)}
+                onOpen={handleOpen(setOpen)}
                 open={open}
             >
-                {actions.map((action) => (
-                    <SpeedDialAction
-                        key={action.name}
-                        icon={action.icon}
-                        tooltipTitle={action.name}
-                        onClick={handleClose}
-                    />
-                ))}
+                {actions.map((action) => (<SpeedDialAction key={action.name} icon={action.icon} tooltipTitle={action.name} onClick={handleClose(setOpen)} />))}
             </SpeedDial>
         </div>
     )

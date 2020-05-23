@@ -1,11 +1,11 @@
 import React from "react"
 import {Switch, Route} from "react-router-dom"
-import Home from "./components/Home"
-import Ranking from "./components/Ranking"
-import Search from "./components/Search"
+import {Home} from "./components/Home"
+import {Ranking} from "./components/Ranking"
+import {Search} from "./components/Search"
 import {ItemDetail} from "./components/ItemDetail"
 
-export default function Routes() {
+export const Routes = () => {
     return (
         <Switch>
             <Route path="/" exact children={<Home />} />
