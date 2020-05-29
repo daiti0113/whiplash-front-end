@@ -42,7 +42,7 @@ const handleClose = (setOpen) => () => {
 }
 
 
-export const OpenIconSpeedDial = () => {
+export const HoverMenu = () => {
     const classes = useStyles()
     const [open, setOpen] = React.useState(false)
 

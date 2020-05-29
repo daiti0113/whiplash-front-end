@@ -19,6 +19,7 @@ server.use((req, res, next) => {
         req.method = "GET" // GETに偽装
         req.url += "_delete"
     }
+    req.url = req.url.match(/\/reviews\/[0-9]+/g) ? req.url.replace(/[0-9]+/g, String(Math.floor(Math.random() * -2) + 3)) : req.url
     req.url = req.url.replace(/\./g, "")
     console.log(req.url)
     next()

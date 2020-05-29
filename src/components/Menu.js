@@ -78,9 +78,9 @@ export const CustomizedMenus = () => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose(setAnchorEl)}
             >
-                <MenuLink to="/" title="ホーム" icon={<HomeIcon fontSize="small" />} />
+                {/* <MenuLink to="/" title="ホーム" icon={<HomeIcon fontSize="small" />} />
                 <MenuLink to="/ranking" title="ランキング" icon={<StarIcon fontSize="small" />} />
-                <MenuLink to="/search" title="クチコミを書く" icon={<CreateIcon fontSize="small" />} />
+                <MenuLink to="/search" title="クチコミを書く" icon={<CreateIcon fontSize="small" />} /> */}
             </StyledMenu>
         </div>
     )
