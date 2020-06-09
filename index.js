@@ -20,7 +20,8 @@ if (process.env.NODE_ENV === "dev") {
 
 const useStyles = makeStyles(() => ({
     content: {
-        marginTop: "10"
+        marginTop: "10",
+        padding: "0 10"
     }
 }))
 
