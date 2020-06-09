@@ -1,8 +1,8 @@
-import React from 'react';
-import ItemList from './ItemList';
+import React from "react"
+import {ItemList} from "./ItemList"
 
-export default function Ranking() {
+export const Ranking = () => {
     return (
         <ItemList />
     )
-};
+}

@@ -1,19 +1,20 @@
-import axios from 'axios';
+import axios from "axios"
 
-const base_url = process.env.API_ROOT;
+// eslint-disable-next-line no-undef
+const base_url = process.env.API_ROOT
 
-export default function requestAPI(method, endpoint, params = []) {
-    let res = {};
+export const requestAPI = (method, endpoint) => {
+    let res = {}
     switch(method) {
-        case 'GET':
-            res = axios.get(base_url + endpoint);
-            break;
-        case 'POST':
-        case 'PUT':
-        case 'DELETE':
-            res = "";
-            break;
+    case "GET":
+        res = axios.get(base_url + endpoint)
+        break
+    case "POST":
+    case "PUT":
+    case "DELETE":
+        res = ""
+        break
     }
-    return res;
+    return res
 }
 

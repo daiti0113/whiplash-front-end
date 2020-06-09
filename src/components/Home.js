@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react"
 
-export default function Home() {
+export const Home = () => {
     return (
         <h1>ホーム画面です。</h1>
     )
-};
+}
