@@ -1,2 +1,7 @@
 /node_modules
+/dist
+/.cache
+/assets
 .DS_Store
+.env.prd
+.env.stg

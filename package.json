@@ -1,13 +1,41 @@
 {
   "name": "whiplash-front-end",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "dependencies": {
-    "json-server": "^0.15.1"
+    "@babel/polyfill": "^7.8.3",
+    "@material-ui/core": "^4.9.1",
+    "@material-ui/icons": "^4.5.1",
+    "@material-ui/lab": "4.0.0-alpha.47",
+    "@types/react": "^16.9.19",
+    "@welldone-software/why-did-you-render": "^4.0.5",
+    "axios": "^0.19.2",
+    "json-server": "^0.15.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
+    "typeface-roboto": "0.0.75"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "babel-eslint": "^10.1.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-app": "^9.1.1",
+    "eslint": "^7.0.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-config-standard-react": "^9.2.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-react": "^7.20.0",
+    "parcel-bundler": "^1.12.4",
+    "react-hot-loader": "^4.12.19"
+  },
   "scripts": {
+    "dev": "NODE_ENV=dev parcel index.html",
+    "mock": "NODE_ENV=dev node ./mock/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +47,7 @@
   "bugs": {
     "url": "https://github.com/daiti0113/whiplash-front-end/issues"
   },
-  "homepage": "https://github.com/daiti0113/whiplash-front-end#readme"
+  "homepage": "https://github.com/daiti0113/whiplash-front-end#readme",
+  "keywords": [],
+  "description": ""
 }
